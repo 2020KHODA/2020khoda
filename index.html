@@ -1,26 +1,101 @@
-<!DOCTYPE html><html lang="fa" dir="rtl">
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>قلب ۲۰۲۰خدا — خانه</title>
-<link rel="manifest" href="manifest.webmanifest">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect rx='22' width='100' height='100' fill='%2300ffd1'/><text x='50' y='60' font-size='42' text-anchor='middle' fill='%230b0f14'>20</text></svg>">
-<link rel="stylesheet" href="assets/style.css">
-<meta name="description" content="سایت رسمی 2020KHODA | جاودانگی ۲۰۲۰خدا">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>2020KHODA — جاوادِنگی خفن</title>
+<meta name="description" content="سایت رسمی 2020KHODA با افکت‌های نئونی و انیمیشن حرفه‌ای" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2248%22 fill=%22%232c3e50%22/><text x=%2250%22 y=%2258%22 font-size=%2248%22 text-anchor=%22middle%22 fill=%22%23fff%22>20</text></svg>">
+<style>
+/* ===== Reset + پایه ===== */
+*{box-sizing:border-box}html,body{height:100%}
+:root{
+  --bg:#0b0f14; --bg-soft:#0f151d; --text:#e9eef5; --muted:#9fb3c8;
+  --brand:#00ffd1; --brand2:#7c4dff; --card:rgba(255,255,255,.06); --stroke:rgba(255,255,255,.12);
+  --shadow:0 10px 30px rgba(0,0,0,.35);
+}
+:root.light{
+  --bg:#f7f9fc; --bg-soft:#ffffff; --text:#0b1a2b; --muted:#516579;
+  --card:rgba(0,0,0,.04); --stroke:rgba(0,0,0,.08); --shadow:0 10px 24px rgba(0,0,0,.12);
+}
+body{
+  margin:0; font:16px/1.8 ui-sans-serif,system-ui,Segoe UI,Roboto,IRANSans,Arial; 
+  background:radial-gradient(1200px 600px at 80% -20%, rgba(124,77,255,.18),transparent),
+             radial-gradient(1000px 500px at 10% 10%, rgba(0,255,209,.12),transparent), var(--bg);
+  color:var(--text); overflow-x:hidden;
+}
+/* ===== Canvas ستاره‌ها ===== */
+#stars{position:fixed;inset:0;z-index:-1;filter:contrast(130%) brightness(110%)}
+/* ===== ناوبری ===== */
+nav{
+  position:sticky; top:0; backdrop-filter:saturate(160%) blur(8px);
+  background:linear-gradient( to left, rgba(124,77,255,.12), rgba(0,255,209,.12)) ;
+  border-bottom:1px solid var(--stroke); z-index:50;
+}
+.nav-wrap{max-width:1100px;margin:auto;display:flex;gap:16px;align-items:center;justify-content:space-between;padding:10px 18px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.5px}
+.brand i{width:26px;height:26px;border-radius:7px;background:linear-gradient(135deg,var(--brand),var(--brand2));box-shadow:0 0 20px rgba(0,255,209,.5)}
+nav a{color:var(--text);text-decoration:none;opacity:.9}
+.menu{display:flex;gap:16px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:14px;border:1px solid var(--stroke);background:var(--card);box-shadow:var(--shadow);cursor:pointer;transition:.25s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 14px 40px rgba(124,77,255,.25)}
+.theme{border-radius:12px;padding:8px 10px}
+.badge{font-size:12px;padding:4px 10px;border-radius:999px;border:1px solid var(--stroke);background:var(--card);}
+/* ===== هیرو ===== */
+.hero{min-height:72vh;display:grid;place-items:center;padding:60px 16px}
+.hero .inner{max-width:1100px;margin:auto;display:grid;grid-template-columns:1.2fr .8fr;gap:28px}
+@media (max-width:900px){.hero .inner{grid-template-columns:1fr}}
+.h-title{font-size:clamp(32px,5vw,56px);line-height:1.15;margin:0 0 10px;font-weight:900}
+.h-title span{background:linear-gradient(135deg,var(--brand),var(--brand2));-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:0 0 30px rgba(0,255,209,.25)}
+.h-sub{color:var(--muted);margin:0 0 22px}
+.kit{display:flex;gap:10px;flex-wrap:wrap}
+.neon{position:relative}
+.neon::after{content:"";position:absolute;inset:-2px;border-radius:16px;background:
+ radial-gradient(200px 50px at 50% -20%,rgba(0,255,209,.35),transparent),
+ radial-gradient(200px 50px at 50% 120%,rgba(124,77,255,.35),transparent);
+ filter:blur(14px);z-index:-1;opacity:.7}
+/* ===== کارت‌ها ===== */
+.section{padding:28px 16px}
+.wrap{max-width:1100px;margin:auto}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+@media (max-width:900px){.grid{grid-template-columns:1fr 1fr}}
+@media (max-width:620px){.grid{grid-template-columns:1fr}}
+.card{
+  padding:18px;border-radius:18px;border:1px solid var(--stroke);background:
+  linear-gradient( to bottom right, rgba(255,255,255,.06), rgba(255,255,255,.02) );
+  box-shadow:var(--shadow); position:relative; overflow:hidden;
+}
+.card h3{margin:2px 0 8px}
+.card p{color:var(--muted);margin:0}
+.tag{font-size:12px;background:linear-gradient(135deg,var(--brand),var(--brand2));color:#001b18;padding:4px 10px;border-radius:999px;font-weight:700}
+.card .shine{position:absolute;inset:-40% -10%;transform:rotate(25deg);background:linear-gradient(90deg,transparent,rgba(255,255,255,.18),transparent);height:140%;filter:blur(18px);animation:shine 7s linear infinite}
+@keyframes shine{0%{translate:-120% 0}100%{translate:120% 0}}
+/* ===== سکشن تماس/پاور ===== */
+.cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:10px}
+footer{border-top:1px solid var(--stroke);padding:24px 16px;text-align:center;color:var(--muted);background:var(--bg-soft)}
+/* ===== تایپ‌نویس ===== */
+.type{border-right:2px solid var(--brand);white-space:nowrap;overflow:hidden}
+/* ===== اسکرول-ریویل ===== */
+.reveal{opacity:0;transform:translateY(20px);transition:all .7s cubic-bezier(.2,.8,.2,1)}
+.reveal.show{opacity:1;transform:none}
+.small{font-size:13px;color:var(--muted)}
+.imgbox{aspect-ratio:16/10;border-radius:14px;background:
+  radial-gradient(500px 160px at 20% 0, rgba(124,77,255,.25),transparent),
+  radial-gradient(500px 160px at 80% 100%, rgba(0,255,209,.2),transparent), var(--bg-soft);
+  border:1px dashed var(--stroke);display:grid;place-items:center;color:var(--muted);font-weight:700}
+</style>
 </head>
 <body>
 <canvas id="stars"></canvas>
 
-<nav class="nav">
+<nav>
   <div class="nav-wrap">
-    <a class="brand" href="index.html"><i></i><span>۲۰۲۰خدا</span><span class="badge">Infinity</span></a>
-    <button id="navToggle" class="hamb">☰</button>
-    <div class="menu" id="menu">
-      <a href="index.html">خانه</a>
-      <a href="projects.html">پروژه‌ها</a>
-      <a href="blog.html">بلاگ</a>
-      <a href="about.html">درباره</a>
-      <a href="contact.html">ارتباط</a>
-      <button id="themeBtn" class="btn theme">🌓</button>
+    <div class="brand"><i></i><a href="#">2020KHODA</a><span class="badge">نسخه α</span></div>
+    <div class="menu">
+      <a href="#features">ویژگی‌ها</a>
+      <a href="#showcase">شوزکیس</a>
+      <a href="#contact">ارتباط</a>
+      <button id="themeBtn" class="btn theme" aria-label="تغییر تم">🌓 تغییر تم</button>
     </div>
   </div>
 </nav>
@@ -28,29 +103,184 @@
 <header class="hero">
   <div class="inner">
     <div>
-      <h1 class="h-title">به <span>قلب ۲۰۲۰خدا</span> خوش آمدید</h1>
-      <p class="h-sub type" id="type">جاودانگی با نئون، سرعت و ظرافت—بدون کتابخانه خارجی</p>
+      <h1 class="h-title">
+        به <span>جاوادِنگی ۲۰۲۰خدا</span> خوش آمدید
+      </h1>
+      <p class="h-sub type" id="type">سریع، نئونی، خفن و جهانی — ساخته‌شده فقط با HTML/CSS/JS</p>
       <div class="kit">
-        <a class="btn neon" href="projects.html">شروع با پروژه‌ها 🚀</a>
-        <a class="btn" href="https://github.com/2020KHODA" target="_blank" rel="noopener">گیت‌هاب</a>
+        <a class="btn neon" href="#features">شروع کن 🚀</a>
+        <a class="btn" href="https://github.com/2020KHODA/2020khoda" target="_blank" rel="noopener">گیت‌هاب</a>
       </div>
-      <p class="small">PWA فعال است؛ صفحه‌ها به‌صورت سبک آفلاین می‌شوند.</p>
+      <div class="small" style="margin-top:8px">⚡ بدون هیچ کتابخانه‌ای؛ همه‌چی دست‌ساز و ریسپانسیو.</div>
     </div>
-    <div class="imgbox">جای لوگوی شما</div>
+    <div class="imgbox">جای لوگو/تصویر شما</div>
   </div>
 </header>
 
-<section class="section">
+<section id="features" class="section">
   <div class="wrap">
-    <h2 class="sec-title">ویژگی‌ها</h2>
+    <h2 class="h-title" style="font-size:clamp(24px,3.6vw,36px)">قدرت‌های 2020KHODA</h2>
     <div class="grid">
-      <article class="card reveal"><span class="tag">Canvas</span><h3>ستاره‌های زنده</h3><p>پس‌زمینه‌ی پارالاکس روان و کم‌مصرف.</p><div class="shine"></div></article>
-      <article class="card reveal"><span class="tag">UX</span><h3>تم روشن/تاریک</h3><p>ذخیره در localStorage؛ احترام به انتخاب کاربر.</p><div class="shine"></div></article>
-      <article class="card reveal"><span class="tag">PWA</span><h3>کار در حالت آفلاین</h3><p>Service Worker ساده؛ بارگذاری سریع دوباره.</p><div class="shine"></div></article>
+      <article class="card reveal">
+        <span class="tag">نئونی</span>
+        <h3>گرادیان هوشمند + گلس‌مورفیسم</h3>
+        <p>ترکیب نور نئونی با کارت‌های شیشه‌ای و سایه‌های نرم برای حس مدرن.</p>
+        <div class="shine"></div>
+      </article>
+      <article class="card reveal">
+        <span class="tag">پویا</span>
+        <h3>پس‌زمینه‌ی ستاره‌ای زنده</h3>
+        <p>Canvas اختصاصی با پارالاکس؛ سبک، سریع و روان روی موبایل.</p>
+        <div class="shine"></div>
+      </article>
+      <article class="card reveal">
+        <span class="tag">تعامل</span>
+        <h3>اسکرول-ریویل + تایپ‌نویس</h3>
+        <p>عناصر هنگام دیدن کاربر ظاهر می‌شن و تیتر با افکت تایپ می‌درخشه.</p>
+        <div class="shine"></div>
+      </article>
+      <article class="card reveal">
+        <span class="tag">RTL</span>
+        <h3>کاملاً فارسی و راست‌چین</h3>
+        <p>فونت‌های سیستم، رندر درست روی همه‌ی دستگاه‌ها.</p>
+        <div class="shine"></div>
+      </article>
+      <article class="card reveal">
+        <span class="tag">Theme</span>
+        <h3>سوئیچ تم روشن/تاریک</h3>
+        <p>تنظیمات کاربر در localStorage ذخیره می‌شه. UX حرفه‌ای، ساده.</p>
+        <div class="shine"></div>
+      </article>
+      <article class="card reveal">
+        <span class="tag">SEO</span>
+        <h3>بهینه برای Pages</h3>
+        <p>ساختار تمیز، متا و سرعت بالا—امتیاز عالی Lighthouse.</p>
+        <div class="shine"></div>
+      </article>
     </div>
   </div>
 </section>
 
-<footer>© <span id="y"></span> 2020KHODA — عشق و نئون 💜</footer>
-<script src="assets/app.js"></script>
-</body></html>
+<section id="showcase" class="section">
+  <div class="wrap">
+    <h2 class="h-title" style="font-size:clamp(24px,3.6vw,36px)">شوزکیس پروژه‌ها</h2>
+    <div class="grid">
+      <article class="card reveal">
+        <h3>پروژه یک</h3>
+        <p>توضیح کوتاه از نمونه‌کار. <a href="#" target="_blank">مشاهده</a></p>
+      </article>
+      <article class="card reveal">
+        <h3>پروژه دو</h3>
+        <p>توضیح کوتاه از نمونه‌کار. <a href="#" target="_blank">مشاهده</a></p>
+      </article>
+      <article class="card reveal">
+        <h3>پروژه سه</h3>
+        <p>توضیح کوتاه از نمونه‌کار. <a href="#" target="_blank">مشاهده</a></p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="section">
+  <div class="wrap">
+    <h2 class="h-title" style="font-size:clamp(24px,3.6vw,36px)">ارتباط با 2020KHODA</h2>
+    <div class="card reveal">
+      <p>برای همکاری/ایده‌ها پیام بده:</p>
+      <div class="cta">
+        <a class="btn neon" href="mailto:yourmail@example.com">ایمیل 📧</a>
+        <a class="btn" href="#" target="_blank" rel="noopener">تلگرام</a>
+        <a class="btn" href="https://github.com/2020KHODA" target="_blank" rel="noopener">گیت‌هاب</a>
+      </div>
+      <p class="small">می‌خوای فرم تماس واقعی هم اضافه کنیم؟ می‌تونم با Formspree یا Cloudflare Pages Function برات راه بندازم.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © <span id="y"></span> 2020KHODA — ساخته با عشق و نئون 💜
+</footer>
+
+<script>
+/* ===== تم روشن/تاریک ===== */
+const root=document.documentElement;
+const themeBtn=document.getElementById('themeBtn');
+const saved=localStorage.getItem('theme');
+if(saved==='light') root.classList.add('light');
+themeBtn.onclick=()=>{root.classList.toggle('light');localStorage.setItem('theme',root.classList.contains('light')?'light':'dark');};
+
+/* ===== سال ===== */
+document.getElementById('y').textContent=new Date().getFullYear();
+
+/* ===== تایپ‌نویس ساده ===== */
+(function typeWriter(){
+  const el=document.getElementById('type');
+  const full=el.textContent.trim();
+  let i=0, dir=1; el.textContent='';
+  setInterval(()=>{
+    i+=dir;
+    if(i>=full.length+4) dir=-1;
+    if(i<=0){dir=1}
+    el.textContent=full.slice(0, Math.max(0,Math.min(i,full.length)));
+  }, 60);
+})();
+
+/* ===== اسکرول-ریویل با IntersectionObserver ===== */
+const io=new IntersectionObserver((ents)=>{
+  ents.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('show'); io.unobserve(e.target);} });
+},{threshold:.2});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+/* ===== پس‌زمینه ستاره‌ای Canvas ===== */
+(() => {
+  const c=document.getElementById('stars'), ctx=c.getContext('2d',{alpha:true});
+  let w,h,stars=[],mouse={x:0,y:0};
+  const DPR= Math.min(window.devicePixelRatio||1,2);
+  function resize(){
+    w=window.innerWidth; h=window.innerHeight;
+    c.width=w*DPR; c.height=h*DPR; c.style.width=w+'px'; c.style.height=h+'px';
+    ctx.setTransform(DPR,0,0,DPR,0,0);
+    makeStars();
+  }
+  function makeStars(){
+    const N=Math.min(220, Math.floor(w*h/6000));
+    stars = Array.from({length:N}, ()=>({
+      x:Math.random()*w, y:Math.random()*h,
+      z:Math.random()*1.2+.2, // اندازه/سرعت
+      a:Math.random()*0.5+0.5
+    }));
+  }
+  function draw(){
+    ctx.clearRect(0,0,w,h);
+    for(const s of stars){
+      s.y += .15*s.z; if(s.y>h) s.y= -2;
+      const dx=(mouse.x-w/2)/w, dy=(mouse.y-h/2)/h;
+      ctx.beginPath();
+      ctx.fillStyle=`rgba(255,255,255,${0.35*s.a})`;
+      const x=s.x + dx*20*s.z, y=s.y + dy*20*s.z, r= s.z*1.3;
+      ctx.arc(x,y,r,0,Math.PI*2); ctx.fill();
+      // دنباله کوتاه
+      ctx.fillRect(x-0.2, y-2.2, 0.8, 2.2);
+      // گلو
+      if(Math.random()<0.003){
+        ctx.fillStyle='rgba(124,77,255,.12)';
+        ctx.fillRect(x-20,y,40,0.6);
+      }
+    }
+    requestAnimationFrame(draw);
+  }
+  window.addEventListener('resize', resize, {passive:true});
+  window.addEventListener('pointermove', e=>{mouse.x=e.clientX;mouse.y=e.clientY;},{passive:true});
+  resize(); draw();
+})();
+
+/* ===== اسکرول نرم برای لینک‌های داخلی ===== */
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click', e=>{
+    const id=a.getAttribute('href').slice(1);
+    const el=document.getElementById(id); if(!el) return;
+    e.preventDefault(); el.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+});
+</script>
+</body>
+</html>
