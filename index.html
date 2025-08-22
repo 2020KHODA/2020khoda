@@ -1,35 +1,33 @@
-<!DOCTYPE html><html lang="fa" dir="rtl"><head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>پست — قلب ۲۰۲۰خدا</title>
-<link rel="stylesheet" href="assets/style.css"><link rel="manifest" href="manifest.webmanifest">
-</head><body>
-<canvas id="stars"></canvas>
-<div data-include="nav"></div>
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2020KHODA | Official</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>👑 2020KHODA</h1>
+    <p>به انتخاب خدا ✨ آغاز جهان جاودانگی</p>
+  </header>
 
-<section class="section">
-  <div class="wrap">
-    <article class="card reveal" id="post">
-      <h1 id="p-title" class="sec-title">...</h1>
-      <p id="p-meta" class="small"></p>
-      <div id="p-body"></div>
-      <p style="margin-top:18px"><a class="btn" href="blog.html">← بازگشت به بلاگ</a></p>
-      <div class="shine"></div>
-    </article>
-  </div>
-</section>
+  <main>
+    <section>
+      <h2>🚀 ماموریت ما</h2>
+      <p>ترکیب ایمان، خلاقیت و تکنولوژی برای ساخت آینده‌ای روشن.</p>
+    </section>
 
-<div data-include="footer"></div>
-<script src="assets/app.js"></script>
-<script>
-  // خواندن پست بر اساس ?id=slug
-  (function(){
-    const qs=new URLSearchParams(location.search); const id=qs.get('id');
-    const post=(window.postsData||[]).find(p=>p.slug===id)||window.postsData?.[0];
-    if(!post) return;
-    document.title=post.title+" — قلب ۲۰۲۰خدا";
-    document.getElementById('p-title').textContent=post.title;
-    document.getElementById('p-meta').textContent=post.date||'';
-    document.getElementById('p-body').innerHTML=post.html||post.excerpt;
-  })();
-</script>
-</body></html>
+    <section>
+      <h2>🌍 چشم‌انداز</h2>
+      <p>برند جهانی 2020KHODA سکوی پرتابی برای تمام نسل‌ها خواهد بود.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 - ساخته شده با ایمان و عشق 💛 | 2020KHODA</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
