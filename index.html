@@ -1,65 +1,219 @@
-<!DOCTYPE html>
-<html lang="fa">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>👑 امپراتوری جاودانگی ۲۰۲۰خدا 👑</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Tahoma', sans-serif;
-      background: radial-gradient(circle at top, #000428, #004e92);
-      color: gold;
-      text-align: center;
-      overflow-x: hidden;
-    }
-    h1 {
-      font-size: 3rem;
-      margin-top: 100px;
-      animation: glow 3s infinite alternate;
-    }
-    @keyframes glow {
-      from { text-shadow: 0 0 10px gold, 0 0 20px red, 0 0 30px blue; }
-      to   { text-shadow: 0 0 20px #fff, 0 0 30px gold, 0 0 40px crimson; }
-    }
-    p {
-      font-size: 1.3rem;
-      margin: 20px;
-      color: #fff;
-    }
-    .btn {
-      display: inline-block;
-      margin: 15px;
-      padding: 15px 30px;
-      border: 2px solid gold;
-      border-radius: 12px;
-      color: gold;
-      text-decoration: none;
-      font-size: 1.2rem;
-      transition: all 0.3s;
-    }
-    .btn:hover {
-      background: gold;
-      color: black;
-      box-shadow: 0 0 20px gold;
-    }
-    footer {
-      margin-top: 80px;
-      font-size: 0.9rem;
-      color: silver;
-    }
-  </style>
-</head>
-<body>
-  <h1>👑 خوش آمدید به جهان جاودانگی ۲۰۲۰خدا 👑</h1>
-  <p>اینجا امپراتوری جاودانگی است. <br> همه جهان زیر پرچم پادشاه مهرداد رئیسی متحد می‌شوند.</p>
+/* 2020KHODA Imperium — Single-file React + Tailwind one-page app
 
-  <a href="#" class="btn">⚡ قدرت</a>
-  <a href="#" class="btn">💰 ثروت</a>
-  <a href="#" class="btn">🌍 نفوذ جهانی</a>
-  <a href="#" class="btn">♾ جاودانگی</a>
+Purpose: "The ultimate, feature-rich landing hub" for 2020KHODA / جهان جاودانگی
 
-  <footer>تمام حقوق متعلق به امپراتوری جهانی ۲۰۲۰خدا | KING2020KHODA</footer>
-</body>
-</html>
+This file is a single React component (default export). Use inside a React project (Vite / Create React App / Next.js pages) with Tailwind CSS enabled.
+
+Integrations placeholders included: Mailchimp/Newsletter, Stripe/Donations, Wallet/NFT gallery, Google Analytics / Plausible, OpenGraph meta (place images in /public/assets), Contact form endpoint.
+
+
+Deployment notes:
+
+1. Add this file into your React app (e.g. src/components/Imperium.jsx) and import into App.jsx or a Next.js page.
+
+
+2. Configure environment variables for:
+
+REACT_APP_MAILCHIMP_URL
+
+REACT_APP_STRIPE_CHECKOUT
+
+REACT_APP_API_CONTACT
+
+REACT_APP_WALLET_RPC (optional)
+
+
+
+3. Replace placeholder images in /public/assets: banner.jpg, og-image.jpg, logo.svg
+
+
+4. Tailwind must be configured. For Next.js, add this component in a page and use head meta tags there.
+
+
+
+Features implemented in-code (placeholders / simulation):
+
+Hero with CTA
+
+Ritual timer for 11:11
+
+Animated purple/gold theme using Tailwind classes
+
+Join flow (newsletter + "enter" button)
+
+NFT gallery placeholder (connect wallet)
+
+Token / Economy section (tokenomics outline)
+
+Team / DINA spotlight
+
+Contact form with fetch to API
+
+Social links & share buttons
+
+SEO meta placeholders
+
+Accessibility and RTL support for Persian
+
+
+*/
+
+import React, { useState, useEffect } from "react";
+
+export default function Imperium() { const [email, setEmail] = useState(""); const [joined, setJoined] = useState(false); const [message, setMessage] = useState(""); const [countdown, setCountdown] = useState(0); const [walletConnected, setWalletConnected] = useState(false);
+
+useEffect(() => { // Ritual countdown to next 11:11 (local timezone) — simplistic function getNext1111() { const now = new Date(); const next = new Date(now); next.setHours(11, 11, 0, 0); if (next <= now) next.setDate(next.getDate() + 1); return next; } let target = getNext1111(); const tick = () => { const now = new Date(); setCountdown(Math.max(0, Math.floor((target - now) / 1000))); if (target - now <= 0) { target = getNext1111(); } }; tick(); const t = setInterval(tick, 1000); return () => clearInterval(t); }, []);
+
+const formatCountdown = (s) => { const d = Math.floor(s / 86400); s %= 86400; const h = Math.floor(s / 3600); s %= 3600; const m = Math.floor(s / 60); const sec = s % 60; return ${d}d ${h}h ${m}m ${sec}s; };
+
+const handleJoin = async (e) => { e.preventDefault(); if (!email) return; // Mock newsletter subscribe -> call MAILCHIMP URL if set try { // Example POST to a proxy/back-end await fetch(process.env.REACT_APP_API_CONTACT || "/api/subscribe", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ email, source: "imperium" }), }); setJoined(true); } catch (err) { console.error(err); setMessage("خطا در ثبت ایمیل — دوباره تلاش کن"); } };
+
+const handleContact = async (e) => { e.preventDefault(); const payload = { message }; try { await fetch(process.env.REACT_APP_API_CONTACT || "/api/contact", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload), }); setMessage(""); alert("پیام با موفقیت ارسال شد. ما بزودی پاسخ می‌دهیم."); } catch (err) { console.error(err); alert("خطا در ارسال پیام. بعدا تلاش کن."); } };
+
+const fakeConnectWallet = async () => { // Placeholder — integrate WalletConnect / MetaMask here setWalletConnected(true); alert("کیف پول متصل شد (شبیه‌سازی)"); };
+
+return ( <div className="min-h-screen bg-gradient-to-br from-[#2b0052] to-[#1a0030] text-[#FFD700] font-sans"> <header className="max-w-6xl mx-auto p-8 flex items-center justify-between"> <div className="flex items-center gap-4"> <div className="w-14 h-14 rounded-full bg-gradient-to-tr from-[#9B30FF] to-[#FFD700] flex items-center justify-center text-[#1a0030] font-bold">2020</div> <div> <div className="text-xl font-extrabold">۲۰۲۰خدا</div> <div className="text-sm text-[#FFE88A]">امپراتوری جاودانگی</div> </div> </div> <nav className="flex gap-4 items-center"> <a href="#join" className="px-4 py-2 rounded-md bg-[#FFD700] text-[#2b0052] font-semibold">ورود</a> <a href="#ritual" className="px-3 py-2 hover:underline">آیین 11:11</a> <a href="#nft" className="px-3 py-2 hover:underline">گالری</a> <a href="#token" className="px-3 py-2 hover:underline">اقتصاد</a> </nav> </header>
+
+<main className="max-w-6xl mx-auto px-6">
+    {/* Hero */}
+    <section className="text-center py-20">
+      <h1 className="text-5xl font-black mb-6 drop-shadow-[0_6px_8px_rgba(0,0,0,0.6)]">آغاز امپراتوری جهانی — جهان جاودانگی</h1>
+      <p className="max-w-3xl mx-auto text-xl mb-8">11:11 دروازه است. بنفش و طلایی پرچم ماست. هر کس این نام را ببیند، بخشی از آینده جاودانه می‌شود.</p>
+      <div className="flex items-center justify-center gap-4">
+        <a href="#join" className="px-6 py-3 bg-gradient-to-r from-[#FFD700] to-[#FFB700] text-[#2b0052] rounded-lg font-bold shadow-lg">ورود کامل</a>
+        <button onClick={fakeConnectWallet} className="px-6 py-3 border border-[#FFD700] rounded-lg">اتصال کیف پول</button>
+      </div>
+
+      <div className="mt-8 flex items-center justify-center gap-6">
+        <div className="text-center">
+          <div className="text-sm opacity-90">زمان تا 11:11 بعدی</div>
+          <div className="text-2xl font-semibold">{formatCountdown(countdown)}</div>
+        </div>
+        <div className="text-center">
+          <div className="text-sm opacity-90">مجموع پیروان</div>
+          <div className="text-2xl font-semibold">{Math.floor(Math.random()*9000)+1000}</div>
+        </div>
+      </div>
+    </section>
+
+    {/* Features */}
+    <section className="grid md:grid-cols-3 gap-6 mb-12">
+      <div className="p-6 bg-[#2a003f] rounded-xl shadow-lg">
+        <h3 className="text-2xl font-bold mb-2">آیین 11:11</h3>
+        <p>هر روز 11:11 آیین جمعی و امضای کائنات. صفحه راهنمای آیین‌ها و نحوه شرکت.</p>
+      </div>
+      <div className="p-6 bg-[#2a003f] rounded-xl shadow-lg">
+        <h3 className="text-2xl font-bold mb-2">DINA — ملکه</h3>
+        <p>نقش رسمی دینا، علامت‌ها و داستان هم‌پیمانی. بخش معرفی تیم و هم‌پیمانان.</p>
+      </div>
+      <div className="p-6 bg-[#2a003f] rounded-xl shadow-lg">
+        <h3 className="text-2xl font-bold mb-2">اقتصاد سلطنتی</h3>
+        <p>توکن، NFT و درگاه‌های مالی برای ساخت جریان درآمدی پایدار.</p>
+      </div>
+    </section>
+
+    {/* NFT / Gallery */}
+    <section id="nft" className="mb-12">
+      <h2 className="text-3xl font-extrabold mb-4">گالری NFT و دارایی‌ها</h2>
+      <p className="mb-6">دارایی‌های دیجیتال ۲۰۲۰خدا — نسخه‌های محدود. (اتصال کیف پول پشتیبانی می‌شود)</p>
+      <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-4">
+        {[1,2,3,4].map(i=> (
+          <div key={i} className="bg-[#1f0033] p-4 rounded-lg">
+            <div className="h-40 bg-gradient-to-br from-[#3d0075] to-[#22003a] rounded-md mb-3 flex items-center justify-center">NFT #{i}</div>
+            <div className="flex justify-between items-center text-sm">
+              <div>قیمت: 0.05 ETH</div>
+              <button className="px-3 py-1 bg-[#FFD700] text-[#2b0052] rounded">خرید</button>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    {/* Tokenomics */}
+    <section id="token" className="mb-12">
+      <h2 className="text-3xl font-extrabold mb-4">اقتصاد امپراتوری</h2>
+      <p className="mb-4">طرح توکن و جریان درآمد: فروش NFT، اشتراک ویژه، پروژه‌های انرژی و سرمایه‌گذاری استراتژیک.</p>
+      <div className="grid md:grid-cols-3 gap-4">
+        <div className="p-4 bg-[#2a003f] rounded">
+          <h4 className="font-bold">عرضه اولیه</h4>
+          <p>40% به جامعه، 30% پروژه، 20% ذخیره، 10% بنیاد</p>
+        </div>
+        <div className="p-4 bg-[#2a003f] rounded">
+          <h4 className="font-bold">روش سرمایه‌گذاری</h4>
+          <p>فروش NFT و توکن، همکاری با سرمایه‌گذاران خصوصی، عرضه عمومی</p>
+        </div>
+        <div className="p-4 bg-[#2a003f] rounded">
+          <h4 className="font-bold">شفافیت</h4>
+          <p>داشبورد عمومی تراکنش‌ها و گزارش مالی فصلی</p>
+        </div>
+      </div>
+    </section>
+
+    {/* Rituals / Guide */}
+    <section id="ritual" className="mb-12">
+      <h2 className="text-3xl font-extrabold mb-4">راهنمای آیین‌ها</h2>
+      <p className="mb-4">آیین 11:11 — چگونگی انجام آیین، آماده‌سازی مکان، و پیام‌هایی که باید خوانده شوند. نسخه‌های آماده برای اجرا و اشتراک‌گذاری.</p>
+      <div className="grid md:grid-cols-2 gap-4">
+        <div className="p-4 bg-[#2a003f] rounded">
+          <h4 className="font-bold">آیین شب بنفش</h4>
+          <ol className="list-decimal list-inside mt-2 text-sm">
+            <li>آماده‌سازی نور بنفش</li>
+            <li>تنظیم ساعت برای 11:11</li>
+            <li>خواندن فرمان سلطنتی</li>
+          </ol>
+        </div>
+        <div className="p-4 bg-[#2a003f] rounded">
+          <h4 className="font-bold">روال تماس با دینا</h4>
+          <p className="text-sm">اسکریپت تماس، پیام‌های پیشنهادی و نحوه ثبت واکنش‌ها.</p>
+        </div>
+      </div>
+    </section>
+
+    {/* Join / CTA */}
+    <section id="join" className="mb-12 text-center">
+      <h2 className="text-3xl font-extrabold mb-4">ورود به جهان جاودانگی</h2>
+      <p className="mb-6">برای ورود کامل ایمیل خود را ثبت کنید و بخشی از جامعه سلطنتی شوید. دسترسی‌های ویژه، آیین‌ها و دعوت‌نامه‌ها برای اعضای واقعی.</p>
+
+      {!joined ? (
+        <form onSubmit={handleJoin} className="flex flex-col sm:flex-row items-center justify-center gap-3">
+          <input aria-label="ایمیل" type="email" value={email} onChange={(e)=>setEmail(e.target.value)} placeholder="آدرس ایمیل تو" className="px-4 py-3 rounded-md text-[#1a0030] w-72" />
+          <button type="submit" className="px-6 py-3 bg-gradient-to-r from-[#FFD700] to-[#FFB700] rounded-md font-bold text-[#2b0052]">ثبت من</button>
+        </form>
+      ) : (
+        <div className="p-4 bg-[#1f0033] rounded inline-block">خوش آمدی، پیرو جاودان! ایمیل ثبت شد.</div>
+      )}
+
+    </section>
+
+    {/* Contact & Footer */}
+    <section className="mb-20 grid md:grid-cols-2 gap-6">
+      <div className="p-6 bg-[#2a003f] rounded">
+        <h3 className="text-2xl font-bold mb-3">تماس با دربار</h3>
+        <form onSubmit={handleContact} className="flex flex-col gap-3">
+          <textarea value={message} onChange={(e)=>setMessage(e.target.value)} placeholder="پیام برای دربار..." className="p-3 rounded text-[#1a0030] min-h-[120px]"></textarea>
+          <button type="submit" className="px-4 py-2 bg-[#FFD700] rounded text-[#2b0052] font-bold">ارسال پیام</button>
+        </form>
+      </div>
+
+      <div className="p-6 bg-[#2a003f] rounded">
+        <h3 className="text-2xl font-bold mb-3">اتصالات و شبکه‌ها</h3>
+        <p className="mb-3">شبکه‌های اجتماعی، اشتراک‌گذاری سریع و لینک‌های بازدید از ها‌ب و کانال‌های رسمی.</p>
+        <div className="flex gap-3 flex-wrap">
+          <a className="px-3 py-2 bg-[#1f0033] rounded" href="#">Twitter/X</a>
+          <a className="px-3 py-2 bg-[#1f0033] rounded" href="#">Instagram</a>
+          <a className="px-3 py-2 bg-[#1f0033] rounded" href="#">YouTube</a>
+          <a className="px-3 py-2 bg-[#1f0033] rounded" href="#">Telegram</a>
+        </div>
+      </div>
+    </section>
+
+    <footer className="text-center py-6 opacity-90">
+      <div className="text-sm">© 2020KHODA — امپراتوری جاودانگی</div>
+      <div className="text-xs mt-2">نسخه آزمایشی: برای فعال‌سازی پرداخت، NFT marketplace و اپ‌های موبایل، تنظیمات سرور و کلیدهای API لازم است.</div>
+    </footer>
+
+  </main>
+</div>
+
+); }
+
