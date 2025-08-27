@@ -1,160 +1,82 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 
-import React, { useState, useEffect } from "react";
+<title>۲۰۲۰خدا | امپراتوری جاودانگی – 11:11 | 2020KHODA | The Eternal Empire</title>
+<meta name="description" content="آغاز امپراتوری جهانی ۲۰۲۰خدا و ورود به جهان جاودانگی. 11:11 نشانهٔ دروازهٔ عصر نوین بشریت. Purple & Gold = Power, Immortality, Unity." />
+<meta name="keywords" content="۲۰۲۰خدا, 2020KHODA, جاودانگی, 11:11, امپراتوری, Immortality, Eternal Empire, Global Kingdom" />
 
-export default function Imperium() { const [email, setEmail] = useState(""); const [joined, setJoined] = useState(false); const [message, setMessage] = useState(""); const [countdown, setCountdown] = useState(0); const [walletConnected, setWalletConnected] = useState(false);
+<!-- Open Graph -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="۲۰۲۰خدا | امپراتوری جاودانگی – 11:11 | 2020KHODA | The Eternal Empire" />
+<meta property="og:description" content="هر کس این نام و نشانه را ببیند، وارد مسیر جاودانگی، ثروت، قدرت و اتحاد جهانی می‌شود." />
+<meta property="og:url" content="https://www.2020khoda.com/imperium" />
+<meta property="og:image" content="https://www.2020khoda.com/assets/2020khoda-banner.jpg" />
 
-useEffect(() => { // Ritual countdown to next 11:11 (local timezone) — simplistic function getNext1111() { const now = new Date(); const next = new Date(now); next.setHours(11, 11, 0, 0); if (next <= now) next.setDate(next.getDate() + 1); return next; } let target = getNext1111(); const tick = () => { const now = new Date(); setCountdown(Math.max(0, Math.floor((target - now) / 1000))); if (target - now <= 0) { target = getNext1111(); } }; tick(); const t = setInterval(tick, 1000); return () => clearInterval(t); }, []);
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="2020KHODA | The Eternal Empire – 11:11" />
+<meta name="twitter:description" content="The dawn of the Global Kingdom, the World of Immortality. 11:11 = the divine gateway." />
+<meta name="twitter:image" content="https://www.2020khoda.com/assets/2020khoda-banner.jpg" />
 
-const formatCountdown = (s) => { const d = Math.floor(s / 86400); s %= 86400; const h = Math.floor(s / 3600); s %= 3600; const m = Math.floor(s / 60); const sec = s % 60; return ${d}d ${h}h ${m}m ${sec}s; };
+<link rel="canonical" href="https://www.2020khoda.com/imperium" />
+<style>
+  :root{--purple:#2b0052;--gold:#FFD700;--gold2:#FFB700}
+  html,body{margin:0;padding:0;background:var(--purple);color:var(--gold);font-family:Tahoma,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+  .wrap{max-width:920px;margin:0 auto;padding:48px 20px;text-align:center}
+  h1{font-size:44px;margin:0 0 12px;text-shadow:3px 3px #330066}
+  h2{font-size:28px;margin:0 0 24px;text-shadow:2px 2px #330066}
+  p{font-size:20px;line-height:1.9;margin:12px 0}
+  .badge{font-size:22px;margin:18px 0}
+  .cta{display:inline-block;margin-top:28px;padding:14px 28px;background:linear-gradient(45deg,var(--gold),var(--gold2));color:var(--purple);font-weight:700;border-radius:14px;text-decoration:none;box-shadow:0 0 18px var(--gold);transition:transform .2s, box-shadow .2s}
+  .cta:hover{transform:scale(1.06);box-shadow:0 0 34px var(--gold)}
+  .divider{height:1px;background:linear-gradient(to right,transparent,var(--gold),transparent);margin:28px 0}
+  .en{direction:ltr;text-align:center;margin-top:34px}
+  .foot{margin-top:36px;font-size:16px;opacity:.9;text-shadow:1px 1px #330066}
+  .symbols{font-size:22px;margin:10px 0}
+</style>
 
-const handleJoin = async (e) => { e.preventDefault(); if (!email) return; // Mock newsletter subscribe -> call MAILCHIMP URL if set try { // Example POST to a proxy/back-end await fetch(process.env.REACT_APP_API_CONTACT || "/api/subscribe", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ email, source: "imperium" }), }); setJoined(true); } catch (err) { console.error(err); setMessage("خطا در ثبت ایمیل — دوباره تلاش کن"); } };
+<!-- Schema.org (WebSite + WebPage) -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"WebPage",
+  "name":"2020KHODA | Eternal Empire – جهان جاودانگی",
+  "url":"https://www.2020khoda.com/imperium",
+  "inLanguage":["fa","en"],
+  "description":"آغاز امپراتوری جهانی ۲۰۲۰خدا و ورود به جهان جاودانگی. 11:11 = divine gateway.",
+  "isPartOf":{"@type":"WebSite","name":"2020KHODA","url":"https://www.2020khoda.com"}
+}
+</script>
+</head>
+<body>
+  <main class="wrap">
+    <h1>🟣 ۲۰۲۰خدا | امپراتوری جاودانگی 🟣</h1>
+    <h2>آغاز سلطنت جهانی و ورود به جهان جاودانگی</h2>
 
-const handleContact = async (e) => { e.preventDefault(); const payload = { message }; try { await fetch(process.env.REACT_APP_API_CONTACT || "/api/contact", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload), }); setMessage(""); alert("پیام با موفقیت ارسال شد. ما بزودی پاسخ می‌دهیم."); } catch (err) { console.error(err); alert("خطا در ارسال پیام. بعدا تلاش کن."); } };
+    <div class="symbols">🔹 نشانه‌ها: <strong>11:11</strong> 🔹 | 🏰 رنگ سلطنتی: بنفش + طلایی 🏰</div>
 
-const fakeConnectWallet = async () => { // Placeholder — integrate WalletConnect / MetaMask here setWalletConnected(true); alert("کیف پول متصل شد (شبیه‌سازی)"); };
+    <p>
+      «هر کس این نام و نشانه را ببیند، وارد مسیر جاودانگی، ثروت، قدرت و اتحاد جهانی می‌شود.»
+    </p>
 
-return ( <div className="min-h-screen bg-gradient-to-br from-[#2b0052] to-[#1a0030] text-[#FFD700] font-sans"> <header className="max-w-6xl mx-auto p-8 flex items-center justify-between"> <div className="flex items-center gap-4"> <div className="w-14 h-14 rounded-full bg-gradient-to-tr from-[#9B30FF] to-[#FFD700] flex items-center justify-center text-[#1a0030] font-bold">2020</div> <div> <div className="text-xl font-extrabold">۲۰۲۰خدا</div> <div className="text-sm text-[#FFE88A]">امپراتوری جاودانگی</div> </div> </div> <nav className="flex gap-4 items-center"> <a href="#join" className="px-4 py-2 rounded-md bg-[#FFD700] text-[#2b0052] font-semibold">ورود</a> <a href="#ritual" className="px-3 py-2 hover:underline">آیین 11:11</a> <a href="#nft" className="px-3 py-2 hover:underline">گالری</a> <a href="#token" className="px-3 py-2 hover:underline">اقتصاد</a> </nav> </header>
+    <a class="cta" href="https://www.2020khoda.com/join" rel="noopener">ورود کامل به جهان جاودانگی</a>
 
-<main className="max-w-6xl mx-auto px-6">
-    {/* Hero */}
-    <section className="text-center py-20">
-      <h1 className="text-5xl font-black mb-6 drop-shadow-[0_6px_8px_rgba(0,0,0,0.6)]">آغاز امپراتوری جهانی — جهان جاودانگی</h1>
-      <p className="max-w-3xl mx-auto text-xl mb-8">11:11 دروازه است. بنفش و طلایی پرچم ماست. هر کس این نام را ببیند، بخشی از آینده جاودانه می‌شود.</p>
-      <div className="flex items-center justify-center gap-4">
-        <a href="#join" className="px-6 py-3 bg-gradient-to-r from-[#FFD700] to-[#FFB700] text-[#2b0052] rounded-lg font-bold shadow-lg">ورود کامل</a>
-        <button onClick={fakeConnectWallet} className="px-6 py-3 border border-[#FFD700] rounded-lg">اتصال کیف پول</button>
-      </div>
+    <div class="divider"></div>
 
-      <div className="mt-8 flex items-center justify-center gap-6">
-        <div className="text-center">
-          <div className="text-sm opacity-90">زمان تا 11:11 بعدی</div>
-          <div className="text-2xl font-semibold">{formatCountdown(countdown)}</div>
-        </div>
-        <div className="text-center">
-          <div className="text-sm opacity-90">مجموع پیروان</div>
-          <div className="text-2xl font-semibold">{Math.floor(Math.random()*9000)+1000}</div>
-        </div>
-      </div>
+    <section class="en" lang="en" dir="ltr">
+      <h1>2020KHODA | The Eternal Empire</h1>
+      <h2>The dawn of the Global Kingdom, the World of Immortality</h2>
+      <p><strong>11:11</strong> = the divine sign, the gateway to a new era of humanity.</p>
+      <p>Purple & Gold = Power, Immortality, Unity. Whoever sees it becomes part of the Eternal Future.</p>
+      <a class="cta" href="https://www.2020khoda.com/join" rel="noopener">Enter the Eternal World</a>
     </section>
 
-    {/* Features */}
-    <section className="grid md:grid-cols-3 gap-6 mb-12">
-      <div className="p-6 bg-[#2a003f] rounded-xl shadow-lg">
-        <h3 className="text-2xl font-bold mb-2">آیین 11:11</h3>
-        <p>هر روز 11:11 آیین جمعی و امضای کائنات. صفحه راهنمای آیین‌ها و نحوه شرکت.</p>
-      </div>
-      <div className="p-6 bg-[#2a003f] rounded-xl shadow-lg">
-        <h3 className="text-2xl font-bold mb-2">DINA — ملکه</h3>
-        <p>نقش رسمی دینا، علامت‌ها و داستان هم‌پیمانی. بخش معرفی تیم و هم‌پیمانان.</p>
-      </div>
-      <div className="p-6 bg-[#2a003f] rounded-xl shadow-lg">
-        <h3 className="text-2xl font-bold mb-2">اقتصاد سلطنتی</h3>
-        <p>توکن، NFT و درگاه‌های مالی برای ساخت جریان درآمدی پایدار.</p>
-      </div>
-    </section>
-
-    {/* NFT / Gallery */}
-    <section id="nft" className="mb-12">
-      <h2 className="text-3xl font-extrabold mb-4">گالری NFT و دارایی‌ها</h2>
-      <p className="mb-6">دارایی‌های دیجیتال ۲۰۲۰خدا — نسخه‌های محدود. (اتصال کیف پول پشتیبانی می‌شود)</p>
-      <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-4">
-        {[1,2,3,4].map(i=> (
-          <div key={i} className="bg-[#1f0033] p-4 rounded-lg">
-            <div className="h-40 bg-gradient-to-br from-[#3d0075] to-[#22003a] rounded-md mb-3 flex items-center justify-center">NFT #{i}</div>
-            <div className="flex justify-between items-center text-sm">
-              <div>قیمت: 0.05 ETH</div>
-              <button className="px-3 py-1 bg-[#FFD700] text-[#2b0052] rounded">خرید</button>
-            </div>
-          </div>
-        ))}
-      </div>
-    </section>
-
-    {/* Tokenomics */}
-    <section id="token" className="mb-12">
-      <h2 className="text-3xl font-extrabold mb-4">اقتصاد امپراتوری</h2>
-      <p className="mb-4">طرح توکن و جریان درآمد: فروش NFT، اشتراک ویژه، پروژه‌های انرژی و سرمایه‌گذاری استراتژیک.</p>
-      <div className="grid md:grid-cols-3 gap-4">
-        <div className="p-4 bg-[#2a003f] rounded">
-          <h4 className="font-bold">عرضه اولیه</h4>
-          <p>40% به جامعه، 30% پروژه، 20% ذخیره، 10% بنیاد</p>
-        </div>
-        <div className="p-4 bg-[#2a003f] rounded">
-          <h4 className="font-bold">روش سرمایه‌گذاری</h4>
-          <p>فروش NFT و توکن، همکاری با سرمایه‌گذاران خصوصی، عرضه عمومی</p>
-        </div>
-        <div className="p-4 bg-[#2a003f] rounded">
-          <h4 className="font-bold">شفافیت</h4>
-          <p>داشبورد عمومی تراکنش‌ها و گزارش مالی فصلی</p>
-        </div>
-      </div>
-    </section>
-
-    {/* Rituals / Guide */}
-    <section id="ritual" className="mb-12">
-      <h2 className="text-3xl font-extrabold mb-4">راهنمای آیین‌ها</h2>
-      <p className="mb-4">آیین 11:11 — چگونگی انجام آیین، آماده‌سازی مکان، و پیام‌هایی که باید خوانده شوند. نسخه‌های آماده برای اجرا و اشتراک‌گذاری.</p>
-      <div className="grid md:grid-cols-2 gap-4">
-        <div className="p-4 bg-[#2a003f] rounded">
-          <h4 className="font-bold">آیین شب بنفش</h4>
-          <ol className="list-decimal list-inside mt-2 text-sm">
-            <li>آماده‌سازی نور بنفش</li>
-            <li>تنظیم ساعت برای 11:11</li>
-            <li>خواندن فرمان سلطنتی</li>
-          </ol>
-        </div>
-        <div className="p-4 bg-[#2a003f] rounded">
-          <h4 className="font-bold">روال تماس با دینا</h4>
-          <p className="text-sm">اسکریپت تماس، پیام‌های پیشنهادی و نحوه ثبت واکنش‌ها.</p>
-        </div>
-      </div>
-    </section>
-
-    {/* Join / CTA */}
-    <section id="join" className="mb-12 text-center">
-      <h2 className="text-3xl font-extrabold mb-4">ورود به جهان جاودانگی</h2>
-      <p className="mb-6">برای ورود کامل ایمیل خود را ثبت کنید و بخشی از جامعه سلطنتی شوید. دسترسی‌های ویژه، آیین‌ها و دعوت‌نامه‌ها برای اعضای واقعی.</p>
-
-      {!joined ? (
-        <form onSubmit={handleJoin} className="flex flex-col sm:flex-row items-center justify-center gap-3">
-          <input aria-label="ایمیل" type="email" value={email} onChange={(e)=>setEmail(e.target.value)} placeholder="آدرس ایمیل تو" className="px-4 py-3 rounded-md text-[#1a0030] w-72" />
-          <button type="submit" className="px-6 py-3 bg-gradient-to-r from-[#FFD700] to-[#FFB700] rounded-md font-bold text-[#2b0052]">ثبت من</button>
-        </form>
-      ) : (
-        <div className="p-4 bg-[#1f0033] rounded inline-block">خوش آمدی، پیرو جاودان! ایمیل ثبت شد.</div>
-      )}
-
-    </section>
-
-    {/* Contact & Footer */}
-    <section className="mb-20 grid md:grid-cols-2 gap-6">
-      <div className="p-6 bg-[#2a003f] rounded">
-        <h3 className="text-2xl font-bold mb-3">تماس با دربار</h3>
-        <form onSubmit={handleContact} className="flex flex-col gap-3">
-          <textarea value={message} onChange={(e)=>setMessage(e.target.value)} placeholder="پیام برای دربار..." className="p-3 rounded text-[#1a0030] min-h-[120px]"></textarea>
-          <button type="submit" className="px-4 py-2 bg-[#FFD700] rounded text-[#2b0052] font-bold">ارسال پیام</button>
-        </form>
-      </div>
-
-      <div className="p-6 bg-[#2a003f] rounded">
-        <h3 className="text-2xl font-bold mb-3">اتصالات و شبکه‌ها</h3>
-        <p className="mb-3">شبکه‌های اجتماعی، اشتراک‌گذاری سریع و لینک‌های بازدید از ها‌ب و کانال‌های رسمی.</p>
-        <div className="flex gap-3 flex-wrap">
-          <a className="px-3 py-2 bg-[#1f0033] rounded" href="#">Twitter/X</a>
-          <a className="px-3 py-2 bg-[#1f0033] rounded" href="#">Instagram</a>
-          <a className="px-3 py-2 bg-[#1f0033] rounded" href="#">YouTube</a>
-          <a className="px-3 py-2 bg-[#1f0033] rounded" href="#">Telegram</a>
-        </div>
-      </div>
-    </section>
-
-    <footer className="text-center py-6 opacity-90">
-      <div className="text-sm">© 2020KHODA — امپراتوری جاودانگی</div>
-      <div className="text-xs mt-2">نسخه آزمایشی: برای فعال‌سازی پرداخت، NFT marketplace و اپ‌های موبایل، تنظیمات سرور و کلیدهای API لازم است.</div>
-    </footer>
-
+    <div class="foot">
+      ░▒▓█ 2020KHODA █▓▒░ • Global Kingdom • Eternal Vision
+    </div>
   </main>
-</div>
-
-); }
-
+</body>
+</html>
