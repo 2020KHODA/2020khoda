@@ -1,71 +1,42 @@
-<!DOCTYPE html>
-<html lang="fa">
-<head>
-<meta charset="UTF-8">
-<title>ورود به جهان جاودانگی – ۲۰۲۰خدا</title>
-<style>
-body {
-    background-color: #2b0052; /* بنفش سلطنتی */
-    color: #FFD700; /* طلایی */
-    font-family: Tahoma, sans-serif;
-    text-align: center;
-    padding: 50px;
-}
-h1 {
-    font-size: 52px;
-    margin-bottom: 20px;
-    text-shadow: 3px 3px #330066;
-}
-h2 {
-    font-size: 36px;
-    margin-bottom: 30px;
-    text-shadow: 2px 2px #330066;
-}
-p {
-    font-size: 26px;
-    line-height: 1.8;
-}
-.symbols {
-    font-size: 36px;
-    margin: 20px 0;
-}
-.btn-enter {
-    display: inline-block;
-    margin-top: 40px;
-    padding: 15px 30px;
-    background: linear-gradient(45deg, #FFD700, #FFB700);
-    color: #2b0052;
-    font-size: 24px;
-    font-weight: bold;
-    text-decoration: none;
-    border-radius: 12px;
-    box-shadow: 0 0 15px #FFD700;
-    transition: all 0.3s ease;
-}
-.btn-enter:hover {
-    transform: scale(1.1);
-    box-shadow: 0 0 30px #FFD700;
-}
-</style>
-</head>
-<body>
+export default function Home() { return ( <main className="min-h-screen bg-black text-white flex flex-col items-center justify-center p-6"> {/* دروازه اصلی */} <section className="text-center mb-16"> <h1 className="text-5xl font-bold mb-4">👑 2020KHODA 👑</h1> <p className="text-xl text-gray-300">Empire of Eternity | امپراتوری جاودانگی</p> <div className="mt-6"> <video autoPlay loop muted className="rounded-2xl shadow-xl w-full max-w-2xl"> <source src="/flag.mp4" type="video/mp4" /> </video> </div> </section>
 
-<h1>🟣 ۲۰۲۰خدا 🟣</h1>
-<h2>ورود به جهان جاودانگی – امپراتوری جهانی</h2>
+{/* چهار ستون قدرت */}
+  <section className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl w-full">
+    <div className="bg-gray-900 rounded-2xl p-6 shadow-lg hover:shadow-2xl transition">
+      <h2 className="text-2xl font-semibold mb-2">💰 ثروت</h2>
+      <p className="text-gray-400">فروشگاه دیجیتال (NFT، کتاب، کالاهای برند ۲۰۲۰خدا).</p>
+    </div>
 
-<div class="symbols">🔹 نشانه‌ها: 11:11 🔹 | 🏰 رنگ سلطنتی: بنفش + طلایی 🏰</div>
+    <div className="bg-gray-900 rounded-2xl p-6 shadow-lg hover:shadow-2xl transition">
+      <h2 className="text-2xl font-semibold mb-2">🌍 شهرت</h2>
+      <p className="text-gray-400">بخش رسانه (ویدیوها، مقالات، خبرها، حضور جهانی).</p>
+    </div>
 
-<p>
-«هر نگاه، یک ورود به امپراتوری ۲۰۲۰خدا و مسیر جاودانگی است.<br>
-آماده باش، پیرو واقعی مسیر جاودانگی شوی.»
-</p>
+    <div className="bg-gray-900 rounded-2xl p-6 shadow-lg hover:shadow-2xl transition">
+      <h2 className="text-2xl font-semibold mb-2">⚔️ نفوذ</h2>
+      <p className="text-gray-400">شبکه خصوصی لژیون‌ها و اتحاد جهانی.</p>
+    </div>
 
-<a href="www.2020khoda.com/imperium" class="btn-enter">ورود کامل به جهان جاودانگی</a>
+    <div className="bg-gray-900 rounded-2xl p-6 shadow-lg hover:shadow-2xl transition">
+      <h2 className="text-2xl font-semibold mb-2">⏳ جاودانگی</h2>
+      <p className="text-gray-400">آرشیو مقدس: مانیفست، تصاویر و تاریخچه امپراتوری.</p>
+    </div>
+  </section>
 
-<div class="footer" style="margin-top:50px; font-size:22px; text-shadow: 1px 1px #330066;">
-🟣 متحدان و پیروان آماده باشید 🟣<br>
-هر قدم، گامی به سوی ⚡ جهان پایدار و بی‌نهایت ⚡ است.
-</div>
+  {/* بخش اتصال */}
+  <section className="mt-16 text-center">
+    <h3 className="text-2xl font-semibold mb-4">اتصال به امپراتوری</h3>
+    <div className="flex gap-4 justify-center">
+      <a href="#" className="bg-purple-700 px-6 py-2 rounded-xl shadow hover:bg-purple-600 transition">ثبت‌نام</a>
+      <a href="#" className="bg-gray-700 px-6 py-2 rounded-xl shadow hover:bg-gray-600 transition">ورود</a>
+    </div>
+  </section>
 
-</body>
-</html>
+  {/* فوتر */}
+  <footer className="mt-20 text-gray-500 text-sm">
+    <p>© 2025 2020KHODA | Empire of Eternity</p>
+  </footer>
+</main>
+
+) }
+
