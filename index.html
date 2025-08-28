@@ -3,163 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>2020KHODA Real Estate Empire</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', Arial, sans-serif;
-      background: #0d0d0d;
-      color: #f5f5f5;
-      line-height: 1.8;
-    }
-    header {
-      background: linear-gradient(135deg, #111, #000);
-      text-align: center;
-      padding: 2.5rem 1rem;
-      border-bottom: 3px solid #d4af37;
-      position: relative;
-    }
-    header h1 {
-      margin: 0.5rem 0 0;
-      font-size: 2.5rem;
-      color: #d4af37;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-    }
-    header p {
-      margin-top: 0.3rem;
-      font-size: 1.1rem;
-      color: #bbb;
-    }
-    .branding {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 1.5rem;
-    }
-    .branding img {
-      border-radius: 50%;
-      border: 3px solid #d4af37;
-      width: 100px;
-      height: 100px;
-      object-fit: cover;
-      box-shadow: 0 0 20px rgba(212,175,55,0.6);
-    }
-    nav {
-      text-align: center;
-      margin: 2rem 0;
-    }
-    nav button {
-      margin: 0.5rem;
-      padding: 0.8rem 1.5rem;
-      border: 2px solid #d4af37;
-      background: transparent;
-      color: #d4af37;
-      border-radius: 25px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      font-size: 1rem;
-    }
-    nav button:hover {
-      background: #d4af37;
-      color: #000;
-    }
-    section {
-      max-width: 850px;
-      margin: 2rem auto;
-      background: rgba(20, 20, 20, 0.95);
-      padding: 2.5rem;
-      border-radius: 16px;
-      border: 1px solid #333;
-      box-shadow: 0 0 25px rgba(212,175,55,0.2);
-      display: none;
-    }
-    section.active {
-      display: block;
-    }
-    h2 {
-      color: #d4af37;
-      margin-bottom: 1rem;
-      text-align: center;
-    }
-    p {
-      font-size: 1.05rem;
-      color: #ddd;
-    }
-    footer {
-      text-align: center;
-      padding: 1rem;
-      background: #111;
-      border-top: 2px solid #d4af37;
-      color: #aaa;
-      margin-top: 2rem;
-      font-size: 0.9rem;
-    }
-  </style>
+  <title>۲۰۲۰خدا | جهان جاودانگی</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <div class="branding">
-      <!-- لوگو پرچم -->
-      <img src="flag2020khoda.png" alt="2020KHODA Flag Logo">
-      <!-- عکس پروفایل نمادین -->
-      <img src="emperor2020khoda.png" alt="2020KHODA Emperor">
-    </div>
-    <h1>2020KHODA Real Estate Empire</h1>
-    <p>امپراتوری جاودانه املاک | The Eternal Real Estate System</p>
-  </header>
+  <div class="container">
+    <h1>👑 ۲۰۲۰خدا 👑</h1>
+    <p>به جهان جاودانگی خوش آمدید</p>
 
-  <nav>
-    <button onclick="showSection('fa')">فارسی</button>
-    <button onclick="showSection('en')">English</button>
-    <button onclick="showSection('ar')">العربية</button>
-  </nav>
+    <form id="birthForm">
+      <label for="birthdate">تاریخ تولد خود را وارد کنید:</label>
+      <input type="date" id="birthdate" required>
+      <button type="submit">ورود به مسیر جاودانگی</button>
+    </form>
 
-  <section id="fa" class="active">
-    <h2>امپراتوری ۲٠۲٠خدا</h2>
-    <p>
-      ما فقط یک مشاور املاک نیستیم، ما یک <strong>سیستم جاودانه</strong> هستیم.<br>
-      با بیش از ۵ سال تجربه، تخصص ما خرید، فروش و سرمایه‌گذاری در ملک است.<br>
-      نام ما ترکیبی از قدرت، اعتماد و آینده‌نگری است:<br>
-      - ۲۰۲۰خدا (ریشه فارسی)<br>
-      - 2020KHODA (شناسه جهانی)<br>
-      - 2020 Real Estate (نام بین‌المللی)
-    </p>
-  </section>
+    <div id="result"></div>
+  </div>
 
-  <section id="en">
-    <h2>2020KHODA Real Estate Empire</h2>
-    <p>
-      We are more than a real estate agency – we are a <strong>timeless system</strong>.<br>
-      With over 5 years of experience, we specialize in property buying, selling, and investment.<br>
-      Our brand unites three identities into one legacy:<br>
-      - 2020 Real Estate (International name)<br>
-      - 2020KHODA (Global identity)<br>
-      - ۲۰۲۰خدا (Persian heritage)
-    </p>
-  </section>
-
-  <section id="ar">
-    <h2>إمبراطورية ۲۰۲۰خدا العقارية</h2>
-    <p>
-      لسنا مجرد وكالة عقارية، نحن <strong>نظام خالد</strong>.<br>
-      مع أكثر من ٥ سنوات خبرة، نُقدّم خدمات البيع والشراء والاستثمار العقاري.<br>
-      اسمنا يحمل ثلاث هويات في إرث واحد:<br>
-      - 2020 Real Estate (الاسم الدولي)<br>
-      - 2020KHODA (الهوية العالمية)<br>
-      - ۲۰۲۰خدا (الجذور الفارسية)
-    </p>
-  </section>
-
-  <footer>
-    © 2025 | 2020KHODA Real Estate Empire | All Rights Reserved
-  </footer>
-
-  <script>
-    function showSection(lang) {
-      document.querySelectorAll('section').forEach(sec => sec.classList.remove('active'));
-      document.getElementById(lang).classList.add('active');
-    }
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
