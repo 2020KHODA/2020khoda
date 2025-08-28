@@ -23,3 +23,61 @@
   <script src="script.js"></script>
 </body>
 </html>
+body {
+  font-family: 'Tahoma', sans-serif;
+  background: linear-gradient(135deg, #000000, #4b0082);
+  color: #fff;
+  text-align: center;
+  padding: 30px;
+}
+
+.container {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  padding: 20px;
+  max-width: 500px;
+  margin: auto;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+button {
+  background: #ffcc00;
+  color: #000;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 10px;
+  margin-top: 15px;
+  font-weight: bold;
+  cursor: pointer;
+}
+button:hover {
+  background: #ffa500;
+}
+#result {
+  margin-top: 20px;
+  font-size: 1.2rem;
+}
+document.getElementById("birthForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  const birthdate = document.getElementById("birthdate").value;
+  if (!birthdate) return;
+
+  // مجموع اعداد تاریخ تولد
+  const numbers = birthdate.replace(/-/g, "").split("").map(Number);
+  let sum = numbers.reduce((a, b) => a + b, 0);
+
+  // کاهش به تک رقم
+  while (sum > 9) {
+    sum = sum.toString().split("").map(Number).reduce((a, b) => a + b, 0);
+  }
+
+  const resultDiv = document.getElementById("result");
+  resultDiv.innerHTML = `✨ عدد جاودانگی شما: <strong>${sum}</strong> ✨ <br> 
+  شما در روز ${sum} از چرخه جاودانگی وارد مسیر سلطنت می‌شوید 👑🔥`;
+});
