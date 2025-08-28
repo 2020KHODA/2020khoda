@@ -1,1 +1,152 @@
 آغاز جهان جادانگی ۲۰۲۰خدا
+2020khoda-army/
+├─ control_plane/
+│  ├─ app/
+│  │  └─ main.py
+│  ├─ Dockerfile
+│  └─ requirements.txt
+├─ content_engine/
+│  ├─ app/
+│  │  └─ generate.py
+│  ├─ Dockerfile
+│  └─ requirements.txt
+├─ publisher/
+│  ├─ app/
+│  │  └─ publisher.py
+│  ├─ Dockerfile
+│  └─ requirements.txt
+├─ docker-compose.yml
+├─ k8s/
+│  ├─ control-plane-deployment.yaml
+│  ├─ content-engine-deployment.yaml
+│  ├─ publisher-deployment.yaml
+│  └─ service-entries.yaml
+├─ .github/workflows/deploy.yml
+└─ README.md
+from fastapi import FastAPI
+from pydantic import BaseModel
+import uuid, requests, os
+
+app = FastAPI(title="Control Plane - 2020khoda")
+
+class Command(BaseModel):
+    name: str
+    params: dict = {}
+
+@app.post("/command")
+def run_command(cmd: Command):
+    job_id = str(uuid.uuid4())
+    payload = {"job_id": job_id, "cmd": cmd.dict()}
+    # ارسال به content engine (service name in-compose/k8s)
+    try:
+        requests.post(os.getenv("CONTENT_ENGINE_URL","http://content-engine:8001/generate"), json=payload, timeout=5)
+    except Exception as e:
+        # لاگ خطا ولی queue کردن نیز قابل افزودنه (Redis/Kafka)
+        print("dispatch error:", e)
+    return {"status":"accepted","job_id":job_id}
+FROM python:3.11-slim
+WORKDIR /app
+COPY app/ ./app
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
+fastapi
+uvicorn[standard]
+requests
+pydantic
+from fastapi import FastAPI, Request
+from pydantic import BaseModel
+import time, json
+
+app = FastAPI(title="Content Engine")
+
+class Job(BaseModel):
+    job_id: str
+    cmd: dict
+
+@app.post("/generate")
+async def generate(job: Job):
+    # placeholder: اینجا مدل LLM یا API تماس می‌خوره
+    out = {
+        "job_id": job.job_id,
+        "content": f"پیام سلطنتی: {job.cmd.get('name')} — پارامترها: {json.dumps(job.cmd.get('params',{}))}"
+    }
+    # ارسال مستقیم به Publisher
+    # requests.post("http://publisher:8002/publish", json=out)
+    await asyncio.sleep(0.1)
+    return out
+version: "3.8"
+services:
+  control-plane:
+    build: ./control_plane
+    ports:
+      - "8000:8000"
+    environment:
+      - CONTENT_ENGINE_URL=http://content-engine:8001/generate
+
+  content-engine:
+    build: ./content_engine
+    ports:
+      - "8001:8001"
+
+  publisher:
+    build: ./publisher
+    ports:
+      - "8002:8002"
+# در شاخه‌ی ریشه‌ی repo
+docker compose up --build -d
+# سپس ارسال فرمان نمونه:
+curl -X POST "http://localhost:8000/command" -H "Content-Type: application/json" -d '{"name":"اعلام_روز_نو","params":{"message":"پرچم ۲۰۲۰خدا برافراشته"}}'
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: control-plane
+spec:
+  replicas: 2
+  selector:
+    matchLabels: {app: control-plane}
+  template:
+    metadata:
+      labels: {app: control-plane}
+    spec:
+      containers:
+      - name: control-plane
+        image: ghcr.io/your-org/control-plane:latest
+        env:
+        - name: CONTENT_ENGINE_URL
+          value: "http://content-engine:8001/generate"
+        ports:
+        - containerPort: 8000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: control-plane
+spec:
+  type: ClusterIP
+  selector: {app: control-plane}
+  ports:
+  - port: 8000
+    targetPort: 8000
+name: CI/CD Deploy
+on:
+  push:
+    branches: [ main ]
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build and push images
+        uses: docker/build-push-action@v4
+        with:
+          push: true
+          tags: ghcr.io/${{ github.repository_owner }}/control-plane:latest
+      - name: Deploy to Kubernetes
+        uses: azure/k8s-deploy@v4
+        with:
+          manifests: k8s/*.yaml
+        env:
+          KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
+فرمان: راه‌اندازی ارتش خودکار
+عمل: push مخزن به github -> docker compose up (local تست) یا push -> GitHub Actions (prod)
