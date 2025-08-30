@@ -11,4 +11,5 @@
 
 ## مشاهده آنلاین
 
-[نمایش تاج‌گذاری](https://USERNAME.github.io/tajgozari-2020khoda/)
+[نمایش تاج‌گذاری]
+https://2020khoda.github.io
