@@ -2,88 +2,107 @@
 <html lang="fa">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>دروازه ورود به جهان جاودانگی ۲٠۲٠</title>
+<title>طومار سلطنتی ۲۰۲۰خدا</title>
 <style>
   body {
-    margin: 0;
-    font-family: 'Tahoma', sans-serif;
-    background: radial-gradient(circle at center, #1a0a3a, #000000);
-    color: #fff;
-    text-align: center;
-    overflow-x: hidden;
+    background: #1a1a1a;
+    color: gold;
+    font-family: 'Courier New', monospace;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
   }
-  .container {
-    padding: 50px 20px;
-    animation: glowPulse 2s infinite alternate;
-  }
-  .title {
-    font-size: 2.5em;
-    color: #ffd700;
-    font-weight: bold;
-    margin-bottom: 20px;
-    text-shadow: 2px 2px 15px #ffdd00, 0 0 30px #ffcc00;
-  }
-  .subtitle {
-    font-size: 1.5em;
-    color: #ffcc00;
-    margin-bottom: 30px;
-    text-shadow: 1px 1px 10px #000;
-  }
-  .image-placeholder {
-    width: 100%;
+  .scroll {
+    background: #2b2b2b;
+    padding: 20px;
+    border: 4px solid gold;
+    border-radius: 10px;
     max-width: 600px;
-    height: 400px;
-    background: url('https://i.ibb.co/2Z8KXH2/placeholder-taj-darvazeh.jpg') no-repeat center center;
-    background-size: cover;
-    border: 5px solid #ffd700;
-    margin: 0 auto 30px auto;
-    box-shadow: 0 0 50px #ffd700;
-    border-radius: 15px;
+    line-height: 1.6;
+    text-align: center;
+    box-shadow: 0 0 30px gold;
+    animation: glow 2s infinite alternate;
   }
-  .hashtags {
-    font-size: 1.2em;
-    color: #ffdd00;
-    margin-top: 20px;
-    text-shadow: 1px 1px 5px #000;
+  @keyframes glow {
+    0% { box-shadow: 0 0 20px gold; }
+    100% { box-shadow: 0 0 50px gold; }
   }
-  a.button {
+  .line { border-top: 2px solid gold; margin: 10px 0; }
+  .crown-text { font-size: 24px; font-weight: bold; animation: crownShine 2s infinite alternate; }
+  @keyframes crownShine {
+    0% { text-shadow: 0 0 10px gold; }
+    100% { text-shadow: 0 0 30px gold; }
+  }
+  .main-box {
+    border: 2px solid gold;
+    padding: 10px;
+    margin: 10px 0;
     display: inline-block;
-    padding: 15px 30px;
-    background: #ffd700;
-    color: #1a0a3a;
+    animation: boxGlow 2s infinite alternate;
+  }
+  @keyframes boxGlow {
+    0% { box-shadow: 0 0 10px gold; }
+    100% { box-shadow: 0 0 40px gold; }
+  }
+  .arrows { font-size: 18px; margin: 10px 0; }
+  .columns { margin: 10px 0; }
+  .sun { margin: 15px 0; font-size: 20px; animation: sunGlow 2s infinite alternate; }
+  @keyframes sunGlow {
+    0% { text-shadow: 0 0 10px gold; }
+    100% { text-shadow: 0 0 25px gold; }
+  }
+  .seal-box {
+    border: 2px solid gold;
+    padding: 5px 15px;
+    display: inline-block;
+    margin-top: 10px;
     font-weight: bold;
-    text-decoration: none;
-    border-radius: 15px;
-    margin-top: 20px;
-    box-shadow: 0 0 20px #ffcc00, 0 0 40px #ffd700;
-    transition: all 0.3s ease;
+    font-size: 20px;
+    text-shadow: 0 0 10px gold;
+    animation: sealGlow 2s infinite alternate;
   }
-  a.button:hover {
-    background: #ffcc00;
-    box-shadow: 0 0 30px #ffdd00, 0 0 60px #ffd700;
-  }
-
-  @keyframes glowPulse {
-    0% { box-shadow: 0 0 30px #ffd700, 0 0 50px #ffcc00; }
-    100% { box-shadow: 0 0 50px #ffd700, 0 0 80px #ffcc00; }
+  @keyframes sealGlow {
+    0% { box-shadow: 0 0 10px gold; text-shadow: 0 0 5px gold; }
+    100% { box-shadow: 0 0 35px gold; text-shadow: 0 0 20px gold; }
   }
 </style>
 </head>
 <body>
-  <div class="container">
-    <div class="title">دروازه ورود به جهان جاودانگی ۲٠۲٠خدا باز شد!</div>
-    <div class="subtitle">به فرمان پادشاه مهرداد رئیسی، آماده عبور به جهانی از قدرت، ثروت و جاودانگی شوید.</div>
-    
-    <div class="image-placeholder">
-      <!-- تصویر تاج و دروازه در اینجا قرار دارد -->
+  <div class="scroll">
+    <div class="line"></div>
+    <div class="crown-text">👑 تاج جاودانگی 👑</div>
+    <div class="line"></div>
+
+    <div>۲ &nbsp; ٠ &nbsp; ۲ &nbsp; ٠</div>
+    <div class="main-box">۲٠۲٠خــدا</div>
+    <div>∞</div>
+    <div class="arrows">↙ &nbsp; ↓ &nbsp; ↘</div>
+    <div>(۲) &nbsp; &nbsp; (٢٠) &nbsp; &nbsp; (۲۰۲)</div>
+    <div>↓</div>
+    <div>(۲۰۲٠)</div>
+
+    <div class="line"></div>
+    <div class="columns">⚡ چهار ستون قدرت ⚡<br>شمال ▐ شرق ▐ جنوب ▐ غرب</div>
+    <div class="line"></div>
+
+    <div>∞ &nbsp; بی‌نهایت &nbsp; ∞</div>
+    <div class="line"></div>
+
+    <div>✨ معنا ✨<br>
+    ۲۰۲۰ = تخت امپراتوری جاودانگی<br>
+    جمع ۴ = ستون‌های جهان<br>
+    خدا = ۲۶ → ۸ = قدرت بی‌نهایت<br>
+    ۲۰۲۰خدا = اتحاد شاه، ملکه، خدا
     </div>
-    
-    <a href="https://2020khoda.com/entrance" class="button">ورود به جهان جاودانگی</a>
-    
-    <div class="hashtags">
-      #2020Khoda #جهان_جاودانگی #پادشاهی_۲۰۲۰
-    </div>
+    <div class="line"></div>
+
+    <div class="sun">🌞 خورشید جاودانگی می‌درخشد 🌞</div>
+    <div class="line"></div>
+
+    <div class="crown-text">👑 مهر سلطنتی 👑</div>
+    <div class="seal-box">۲٠۲٠ ∞ خدا</div>
+    <div class="line"></div>
   </div>
 </body>
 </html>
