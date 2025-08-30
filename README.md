@@ -12,4 +12,4 @@
 ## مشاهده آنلاین
 
 [نمایش تاج‌گذاری]
-2020khoda.github.io
+https://2020khoda.github.io/2020khoda/
