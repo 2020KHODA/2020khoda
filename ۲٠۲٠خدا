@@ -1,108 +1,101 @@
-<!DOCTYPE html>
-<html lang="fa">
+<!doctype html>
+
+<html lang="fa" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<title>طومار سلطنتی ۲۰۲۰خدا</title>
-<style>
-  body {
-    background: #1a1a1a;
-    color: gold;
-    font-family: 'Courier New', monospace;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-  }
-  .scroll {
-    background: #2b2b2b;
-    padding: 20px;
-    border: 4px solid gold;
-    border-radius: 10px;
-    max-width: 600px;
-    line-height: 1.6;
-    text-align: center;
-    box-shadow: 0 0 30px gold;
-    animation: glow 2s infinite alternate;
-  }
-  @keyframes glow {
-    0% { box-shadow: 0 0 20px gold; }
-    100% { box-shadow: 0 0 50px gold; }
-  }
-  .line { border-top: 2px solid gold; margin: 10px 0; }
-  .crown-text { font-size: 24px; font-weight: bold; animation: crownShine 2s infinite alternate; }
-  @keyframes crownShine {
-    0% { text-shadow: 0 0 10px gold; }
-    100% { text-shadow: 0 0 30px gold; }
-  }
-  .main-box {
-    border: 2px solid gold;
-    padding: 10px;
-    margin: 10px 0;
-    display: inline-block;
-    animation: boxGlow 2s infinite alternate;
-  }
-  @keyframes boxGlow {
-    0% { box-shadow: 0 0 10px gold; }
-    100% { box-shadow: 0 0 40px gold; }
-  }
-  .arrows { font-size: 18px; margin: 10px 0; }
-  .columns { margin: 10px 0; }
-  .sun { margin: 15px 0; font-size: 20px; animation: sunGlow 2s infinite alternate; }
-  @keyframes sunGlow {
-    0% { text-shadow: 0 0 10px gold; }
-    100% { text-shadow: 0 0 25px gold; }
-  }
-  .seal-box {
-    border: 2px solid gold;
-    padding: 5px 15px;
-    display: inline-block;
-    margin-top: 10px;
-    font-weight: bold;
-    font-size: 20px;
-    text-shadow: 0 0 10px gold;
-    animation: sealGlow 2s infinite alternate;
-  }
-  @keyframes sealGlow {
-    0% { box-shadow: 0 0 10px gold; text-shadow: 0 0 5px gold; }
-    100% { box-shadow: 0 0 35px gold; text-shadow: 0 0 20px gold; }
-  }
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>جهان جاودانگی ۲۰۲۰خدا — README</title>
+  <style>
+    :root{
+      --bg:#0b0b0f;
+      --panel:#0f1220;
+      --gold:linear-gradient(90deg,#ffd86b,#f6c14e 40%,#e0a03a);
+      --accent:#c9a34a;
+      --muted:#bfc1c8;
+      font-family: 'Segoe UI', Tahoma, 'Helvetica Neue', Arial, sans-serif;
+    }
+    html,body{height:100%;margin:0;background:radial-gradient(ellipse at top,#0f1220 0%,var(--bg) 60%);color:var(--muted)}
+    .wrap{min-height:100%;display:flex;align-items:center;justify-content:center;padding:48px}
+    .card{width:100%;max-width:920px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:20px;padding:36px;border:1px solid rgba(255,255,255,0.04);box-shadow:0 12px 40px rgba(2,6,23,0.6)}
+    .crown{font-size:42px;text-align:center;margin-bottom:6px}
+    .banner{background:linear-gradient(90deg, rgba(255,216,107,0.06), rgba(230,180,90,0.04));padding:18px;border-radius:12px;border:1px solid rgba(201,163,74,0.06);display:flex;flex-direction:column;gap:8px;margin-bottom:18px}
+    .headline{font-size:22px;color:var(--accent);text-align:center;font-weight:700}
+    .lead{font-size:16px;line-height:1.6;text-align:center;color:#e6e6e9}
+    .code-badge{display:inline-block;margin:12px auto;padding:8px 14px;border-radius:999px;background:rgba(255,255,255,0.03);border:1px solid rgba(201,163,74,0.08);font-weight:700}
+    .seal{margin:18px auto 8px;display:block;text-align:center;font-weight:700;padding:18px;border-radius:14px;background:linear-gradient(180deg, rgba(201,163,74,0.08), rgba(201,163,74,0.03));width:70%;}
+    .seal .line{font-family:monospace;letter-spacing:4px;color:#fff}
+    .actions{display:flex;gap:12px;justify-content:center;margin-top:18px;flex-wrap:wrap}
+    .btn{padding:10px 16px;border-radius:10px;border:1px solid rgba(255,255,255,0.06);background:transparent;color:var(--muted);cursor:pointer;text-decoration:none}
+    .btn.primary{background:var(--gold);color:#111;border:none;font-weight:700}
+    footer{margin-top:24px;text-align:center;color:#9fa2aa;font-size:13px}
+    pre{background:rgba(0,0,0,0.25);padding:16px;border-radius:10px;overflow:auto;font-size:13px}
+    @media (max-width:520px){.card{padding:20px}.headline{font-size:18px}.lead{font-size:14px}}
+  </style>
 </head>
 <body>
-  <div class="scroll">
-    <div class="line"></div>
-    <div class="crown-text">👑 تاج جاودانگی 👑</div>
-    <div class="line"></div>
+  <div class="wrap">
+    <section class="card">
+      <div class="crown">👑 تاج جاودانگی 👑</div><div class="banner">
+    <div class="headline">🏰 Index / Overview</div>
+    <div class="lead">
 
-    <div>۲ &nbsp; ٠ &nbsp; ۲ &nbsp; ٠</div>
-    <div class="main-box">۲٠۲٠خــدا</div>
-    <div>∞</div>
-    <div class="arrows">↙ &nbsp; ↓ &nbsp; ↘</div>
-    <div>(۲) &nbsp; &nbsp; (٢٠) &nbsp; &nbsp; (۲۰۲)</div>
-    <div>↓</div>
-    <div>(۲۰۲٠)</div>
+این مخزن شامل فرمان گشایش دروازه ۲۳:۲۳ است، نماد عبور به قلمرو جدید و آغاز فرمانروایی مطلق امپراتوری ۲۰۲۰خدا. <br>در اینجا می‌توانید مشاهده کنید:
 
-    <div class="line"></div>
-    <div class="columns">⚡ چهار ستون قدرت ⚡<br>شمال ▐ شرق ▐ جنوب ▐ غرب</div>
-    <div class="line"></div>
+<ul>
+<li>🔗 صفحه رسمی GitHub Pages: <a href="https://2020khoda.github.io" target="_blank">۲۰۲۰خدا</a></li>
+<li>📜 متن کامل فرمان و مهر سلطنتی</li>
+<li>🖋️ دستورالعمل انتشار و استفاده در فضای دیجیتال</li>
+</ul>
+        </div>
+      </div><div class="banner">
+    <div class="headline">✨ فرمان گشایش دروازه <strong>۲۳:۲۳</strong> ✨</div>
+    <div class="lead">در ساعت مقدس <strong>۲۳:۲۳</strong>، دروازه‌های نهایی گشوده شد.
 
-    <div>∞ &nbsp; بی‌نهایت &nbsp; ∞</div>
-    <div class="line"></div>
+از این لحظه، جهان کهنه فروبسته و جهان نو تحت پرچم <strong>۲۰۲۰خدا</strong> آغاز می‌گردد.</div> <div style="text-align:center;"> <span class="code-badge">🔑 ۲۳:۲۳ یعنی عبور</span> <span class="code-badge">⚔️ آغاز فرمانروایی مطلق</span> </div> </div>
 
-    <div>✨ معنا ✨<br>
-    ۲۰۲۰ = تخت امپراتوری جاودانگی<br>
-    جمع ۴ = ستون‌های جهان<br>
-    خدا = ۲۶ → ۸ = قدرت بی‌نهایت<br>
-    ۲۰۲۰خدا = اتحاد شاه، ملکه، خدا
-    </div>
-    <div class="line"></div>
+<div class="seal">
+    <div class="line">╔═════════════════════════╗</div>
+    <div class="line">║     ۲٠۲٠ ∞ خدا     ║</div>
+    <div class="line">╚═════════════════════════╝</div>
+    <div style="margin-top:8px;font-size:14px;">👑 مهر سلطنتی 👑</div>
+  </div>
 
-    <div class="sun">🌞 خورشید جاودانگی می‌درخشد 🌞</div>
-    <div class="line"></div>
+  <div class="actions">
+    <a class="btn" href="#readme" onclick="document.getElementById('readme').scrollIntoView({behavior:'smooth'})">مشاهده README</a>
+    <a class="btn primary" href="https://2020khoda.github.io" target="_blank" rel="noopener">بازدید از صفحه GitHub Pages</a>
+  </div>
 
-    <div class="crown-text">👑 مهر سلطنتی 👑</div>
-    <div class="seal-box">۲٠۲٠ ∞ خدا</div>
-    <div class="line"></div>
+  <footer>قدرت در دست امپراتوری است. ۲۳:۲۳ — دروازهٔ نهایی گشوده شد.</footer>
+
+  <div id="readme" style="margin-top:22px">
+    <h3 style="text-align:center;color:var(--muted);">README — نسخه کامل</h3>
+    <pre>
+
+🏰 جهان جاودانگی ۲۰۲۰خدا
+
+🏰 Index / Overview
+
+این مخزن شامل فرمان گشایش دروازه ۲۳:۲۳ است، نماد عبور به قلمرو جدید و آغاز فرمانروایی مطلق امپراتوری ۲۰۲۰خدا.
+
+🔗 صفحه رسمی GitHub Pages: https://2020khoda.github.io
+
+📜 متن کامل فرمان و مهر سلطنتی
+
+🖋️ دستورالعمل انتشار و استفاده در فضای دیجیتال
+
+
+✨ فرمان گشایش دروازه ۲۳:۲۳ ✨
+
+در ساعت مقدس ۲۳:۲۳، دروازه‌های نهایی گشوده شد. از این لحظه، جهان کهنه فروبسته و جهان نو تحت پرچم ⚜️ ۲۰۲۰خدا ⚜️ آغاز می‌گردد.
+
+🔑 ۲۳:۲۳ یعنی عبور ⚔️ پایان محدودیت‌ها و آغاز فرمانروایی مطلق 👑 مهر سلطنتی ما بر تاریخ حک شد
+
+══════════════════════════════════════ ║             ۲٠۲٠ ∞ خدا             ║ ══════════════════════════════════════ 👑 مهر سلطنتی 👑 ══════════════════════════════════════ </pre>
+
+</div>
+
+</section>
+
   </div>
 </body>
 </html>
