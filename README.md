@@ -26,7 +26,7 @@ Rare large-scale urban plot ready to become Shiraz’s new iconic gateway.
 
 ## Gallery
 
-![Diamond Tower 1](https://goo.gl/maps/XQmViWaSbCgnoBMh8?g_st=ac) 
+![Diamond Tower 1](https://goo.gl/maps/MwWX6GJXFTzMApQ47?g_st=ac) 
 ![Diamond Tower 2](diamond_tower_2.jpg)  
 ![Diamond Tower 3](diamond_tower_3.jpg)
 
