@@ -26,13 +26,14 @@ Rare large-scale urban plot ready to become Shiraz’s new iconic gateway.
 
 ## Gallery
 
-![Diamond Tower 1](https://maps.app.goo.gl/7R4wkG135tyJz4v56?g_st=ac) 
-![Diamond Tower 2](https://goo.gl/maps/Dn4gYgDNAUNv6rsS8?g_st=ac)  
-![Diamond Tower 3](https://goo.gl/maps/DWBYzUHVFULjNWoH8?g_st=ac)
+![Diamond Tower 1](diamond_tower_1.jpg)  
+![Diamond Tower 2](diamond_tower_2.jpg)  
+![Diamond Tower 3](diamond_tower_3.jpg)
 
 ## Contact
 
 - تماس: 2020  
 - Search on Google: 2020KHODA
 
-> تصاویر با الهام از پروژه ۲۰۲۰خدا و محل زمین طراحی شده‌اند.  
+> تصاویر با الهام از پروژه ۲۰۲۰خدا و محل زمین طراحی شده‌اند.
+https://username.github.io/2020KHODA-DiamondTower/
