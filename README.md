@@ -24,13 +24,15 @@ An exceptional development opportunity in Shiraz: 20,000 m² with 120 m frontage
 A diamond-shaped land that shines like a mountain — perfect for a landmark tower, luxury residences, branded hotel, and retail complex.  
 Rare large-scale urban plot ready to become Shiraz’s new iconic gateway.
 
+## Gallery
+
+![Diamond Tower 1](diamond_tower_1.jpg)  
+![Diamond Tower 2](diamond_tower_2.jpg)  
+![Diamond Tower 3](diamond_tower_3.jpg)
+
 ## Contact
 
 - تماس: 2020  
-- Search on Google: 2020KHODA  
+- Search on Google: 2020KHODA
 
-## Image
-
-![Diamond Tower Site](https://www.google.com/maps/embed/v1/place?key=YOUR_API_KEY&q=PLACE_ID)
-
-> Replace the placeholder image with the actual photo of the land or tower.
+> تصاویر با الهام از پروژه ۲۰۲۰خدا و محل زمین طراحی شده‌اند.
