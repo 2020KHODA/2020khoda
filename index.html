@@ -179,7 +179,7 @@ header nav a:hover { color: #ffdd00; }
 .platform-card {
   background: #222;
   padding: 20px;
-  width: 250px;
+  width: 220px;
   border-radius: 15px;
   text-align: center;
   transition: 0.3s;
@@ -245,7 +245,7 @@ footer {
 @media (max-width: 768px) {
   .hero h2 { font-size: 36px; }
   .hero p { font-size: 16px; }
-  .platform-card { width: 200px; }
+  .platform-card { width: 180px; }
 }
 </style>
 </head>
@@ -255,8 +255,8 @@ footer {
   <h1>۲۰۲۰KHODA</h1>
   <nav>
     <a href="#hero">خانه</a>
-    <a href="#platforms">پلتفرم‌ها</a>
-    <a href="#contact">تماس مستقیم</a>
+    <a href="#platforms">شبکه‌ها</a>
+    <a href="#contact">تماس</a>
   </nav>
 </header>
 
@@ -264,65 +264,9 @@ footer {
   <div class="particles" id="particles"></div>
   <div class="tower"></div>
   <h2>امپراتوری ۲۰۲۰KHODA</h2>
-  <p>برج الماس ۳D با نورپردازی پویا و دسترسی مستقیم به پلتفرم‌ها</p>
+  <p>برج الماس ۳D با نورپردازی پویا و دسترسی مستقیم به شبکه‌ها</p>
   <div class="buttons">
-    <a href="#platforms">پلتفرم‌ها</a>
+    <a href="#platforms">شبکه‌ها</a>
     <a href="#contact">تماس مستقیم</a>
   </div>
   <div class="direction">
-    هدایت شما: ابتدا برج الماس را مشاهده کنید → سپس به پلتفرم‌ها دسترسی پیدا کنید → و در نهایت با تماس مستقیم ارتباط برقرار کنید
-  </div>
-</section>
-
-<section class="platforms" id="platforms">
-  <div class="platform-card">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="Instagram">
-    <h3>Instagram</h3>
-    <a href="https://www.instagram.com/basebisia" target="_blank">ارتباط مستقیم</a>
-  </div>
-  <div class="platform-card">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/4/42/YouTube_icon_%282013-2017%29.png" alt="Telegram">
-    <h3>Telegram</h3>
-    <a href="https://t.me/BaseBisia" target="_blank">ارتباط مستقیم</a>
-  </div>
-  <div class="platform-card">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Instagram Global">
-    <h3>Instagram Global</h3>
-    <a href="https://www.instagram.com/2020global" target="_blank">ارتباط مستقیم</a>
-  </div>
-  <div class="platform-card">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/4/42/YouTube_icon_%282013-2017%29.png" alt="Email">
-    <h3>Email</h3>
-    <a href="mailto:king2020khoda@gmail.com" target="_blank">ارسال ایمیل</a>
-  </div>
-</section>
-
-<section class="contact" id="contact">
-  <h2>تماس مستقیم با ۲۰۲۰KHODA</h2>
-  <form action="mailto:king2020khoda@gmail.com" method="post" enctype="text/plain">
-    <input type="text" name="name" placeholder="نام شما" required>
-    <input type="email" name="email" placeholder="ایمیل شما" required>
-    <textarea name="message" placeholder="پیام شما" rows="5" required></textarea>
-    <button type="submit">ارسال پیام</button>
-  </form>
-</section>
-
-<footer>
-  © ۲۰۲۰KHODA | همه حقوق محفوظ است
-</footer>
-
-<script>
-// تولید ذرات الماس پویا
-const particlesContainer = document.getElementById('particles');
-for(let i=0;i<100;i++){
-  const p = document.createElement('div');
-  p.classList.add('particle');
-  p.style.left = Math.random()*100+'vw';
-  p.style.animationDelay = Math.random()*5+'s';
-  p.style.width = p.style.height = Math.random()*4+2+'px';
-  particlesContainer.appendChild(p);
-}
-</script>
-
-</body>
-</html>
