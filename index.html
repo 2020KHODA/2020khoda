@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>2020KHODA - املاک الماس‌گونه سلطنتی جهانی</title>
+<title>2020KHODA - املاک الماس‌گونه</title>
 <style>
 body{margin:0;overflow:hidden;background:#000;font-family:'Tahoma',sans-serif;}
-header{text-align:center;color:#ffcc00;font-size:1.8rem;text-shadow:0 0 50px #ffcc00,0 0 100px #ff9900;padding:20px;animation:glow 2s ease-in-out infinite alternate;z-index:2;position:relative;}
+header{text-align:center;color:#ffcc00;font-size:1.8rem;text-shadow:0 0 50px #ffcc00,0 0 100px #ff9900;padding:20px;animation:glow 2s ease-in-out infinite alternate;}
 @keyframes glow{0%{text-shadow:0 0 20px #ffcc00,0 0 40px #ff9900;}50%{text-shadow:0 0 50px #ffcc00,0 0 100px #ff9900;}100%{text-shadow:0 0 80px #ffcc00,0 0 160px #ff9900;}}
 .card-container{position:absolute;top:60%;left:50%;transform:translate(-50%,-50%);display:flex;gap:20px;flex-wrap:wrap;justify-content:center;z-index:2;}
 .card{width:280px;max-width:90vw;background:#111;border:2px solid #ffcc00;border-radius:15px;overflow:hidden;box-shadow:0 0 30px #ffcc00;text-align:center;color:#fff;cursor:pointer;transition:transform 0.3s;}
@@ -23,26 +23,13 @@ canvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:1;}
 </head>
 <body>
 
-<header>
-2020KHODA - خرید و فروش انحصاری ملک‌های الماس‌گونه<br>
-قدرت، لوکس بودن، جاودانگی، انحصار
-</header>
+<header>2020KHODA - خرید و فروش انحصاری ملک‌های الماس‌گونه</header>
 
 <div class="card-container">
     <div class="card" onclick="showDetail('ملک ۲۰هزار متری', 'یک ملک الماس‌گونه بی‌نظیر در ورودی شهر، نماد قدرت و لوکس بودن برند ۲۰۲۰KHODA.')">
         <img src="https://via.placeholder.com/280x150?text=ملک+20هزار+متری" alt="ملک 20 هزار متری">
         <h3>ملک ۲۰هزار متری</h3>
         <p>یک ملک الماس‌گونه بی‌نظیر</p>
-    </div>
-    <div class="card" onclick="showDetail('ملک لوکس ۲', 'جزئیات فوق‌العاده لوکس و انحصاری ملک دوم')">
-        <img src="https://via.placeholder.com/280x150?text=ملک+لوکس+2" alt="ملک لوکس 2">
-        <h3>ملک لوکس ۲</h3>
-        <p>جزئیات فوق‌العاده لوکس</p>
-    </div>
-    <div class="card" onclick="showDetail('ملک لوکس ۳', 'جزئیات فوق‌العاده لوکس و انحصاری ملک سوم')">
-        <img src="https://via.placeholder.com/280x150?text=ملک+لوکس+3" alt="ملک لوکس 3">
-        <h3>ملک لوکس ۳</h3>
-        <p>جزئیات فوق‌العاده لوکس</p>
     </div>
 </div>
 
@@ -57,7 +44,6 @@ canvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:1;}
 <canvas id="bg"></canvas>
 
 <script type="module">
-// WebGL سه‌بعدی با Three.js
 import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.155.0/build/three.module.js';
 import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.155.0/examples/jsm/controls/OrbitControls.js';
 
@@ -68,12 +54,10 @@ camera.position.z=8;
 const renderer = new THREE.WebGLRenderer({canvas:document.getElementById('bg'),antialias:true});
 renderer.setSize(window.innerWidth,window.innerHeight);
 
-// نورپردازی
 scene.add(new THREE.AmbientLight(0xffffff,0.3));
 const point1 = new THREE.PointLight(0xffcc00,1.5,100); point1.position.set(10,10,10); scene.add(point1);
 const point2 = new THREE.PointLight(0xff6600,1.2,100); point2.position.set(-10,10,10); scene.add(point2);
 
-// ذرات
 const starGeo = new THREE.BufferGeometry();
 const starCount=500;
 const posArray = new Float32Array(starCount*3);
@@ -82,11 +66,9 @@ starGeo.setAttribute('position',new THREE.BufferAttribute(posArray,3));
 const stars = new THREE.Points(starGeo,new THREE.PointsMaterial({color:0xffffff,size:0.05}));
 scene.add(stars);
 
-// کنترل
 const controls = new OrbitControls(camera,renderer.domElement);
 controls.enableDamping=true; controls.dampingFactor=0.05; controls.enablePan=false;
 
-// انیمیشن
 function animate(){
     requestAnimationFrame(animate);
     const pos = stars.geometry.attributes.position.array;
@@ -98,7 +80,6 @@ function animate(){
 animate();
 window.addEventListener('resize',()=>{camera.aspect=window.innerWidth/window.innerHeight; camera.updateProjectionMatrix(); renderer.setSize(window.innerWidth,window.innerHeight);});
 
-// Pop-up جزئیات ملک
 function showDetail(title,desc){
     document.getElementById('popup-title').innerText=title;
     document.getElementById('popup-desc').innerText=desc;
