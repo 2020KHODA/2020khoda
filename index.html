@@ -1,26 +1,113 @@
-# 2020KHODA - صفحه رسمی املاک الماس‌گونه
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2020KHODA - املاک الماس‌گونه سلطنتی جهانی</title>
+<style>
+body{margin:0;overflow:hidden;background:#000;font-family:'Tahoma',sans-serif;}
+header{text-align:center;color:#ffcc00;font-size:1.8rem;text-shadow:0 0 50px #ffcc00,0 0 100px #ff9900;padding:20px;animation:glow 2s ease-in-out infinite alternate;z-index:2;position:relative;}
+@keyframes glow{0%{text-shadow:0 0 20px #ffcc00,0 0 40px #ff9900;}50%{text-shadow:0 0 50px #ffcc00,0 0 100px #ff9900;}100%{text-shadow:0 0 80px #ffcc00,0 0 160px #ff9900;}}
+.card-container{position:absolute;top:60%;left:50%;transform:translate(-50%,-50%);display:flex;gap:20px;flex-wrap:wrap;justify-content:center;z-index:2;}
+.card{width:280px;max-width:90vw;background:#111;border:2px solid #ffcc00;border-radius:15px;overflow:hidden;box-shadow:0 0 30px #ffcc00;text-align:center;color:#fff;cursor:pointer;transition:transform 0.3s;}
+.card img{width:100%;height:auto;display:block;}
+.card h3{margin:5px 0;} .card p{margin:0 5px;font-size:0.9rem;}
+.card:hover{transform:scale(1.05);}
+#tower{width:200px;max-width:30vw;height:auto;position:absolute;bottom:20px;right:20px;border:3px solid #ffcc00;border-radius:10px;box-shadow:0 0 30px #ffcc00;z-index:2;}
+canvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:1;}
+.popup{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:#111;color:#fff;padding:20px;border:3px solid #ffcc00;border-radius:15px;box-shadow:0 0 50px #ffcc00;display:none;z-index:3;max-width:90vw;}
+.popup h2{margin:0 0 10px 0;}
+.popup p{margin:0;}
+.close-btn{position:absolute;top:5px;right:10px;cursor:pointer;color:#ffcc00;font-weight:bold;font-size:1.2rem;}
+</style>
+</head>
+<body>
 
-این صفحه رسمی برند **۲۰۲۰KHODA** است که تجربه **لوکس، سلطنتی و جهانی** خرید و فروش ملک‌های انحصاری را ارائه می‌دهد.
+<header>
+2020KHODA - خرید و فروش انحصاری ملک‌های الماس‌گونه<br>
+قدرت، لوکس بودن، جاودانگی، انحصار
+</header>
 
----
+<div class="card-container">
+    <div class="card" onclick="showDetail('ملک ۲۰هزار متری', 'یک ملک الماس‌گونه بی‌نظیر در ورودی شهر، نماد قدرت و لوکس بودن برند ۲۰۲۰KHODA.')">
+        <img src="https://via.placeholder.com/280x150?text=ملک+20هزار+متری" alt="ملک 20 هزار متری">
+        <h3>ملک ۲۰هزار متری</h3>
+        <p>یک ملک الماس‌گونه بی‌نظیر</p>
+    </div>
+    <div class="card" onclick="showDetail('ملک لوکس ۲', 'جزئیات فوق‌العاده لوکس و انحصاری ملک دوم')">
+        <img src="https://via.placeholder.com/280x150?text=ملک+لوکس+2" alt="ملک لوکس 2">
+        <h3>ملک لوکس ۲</h3>
+        <p>جزئیات فوق‌العاده لوکس</p>
+    </div>
+    <div class="card" onclick="showDetail('ملک لوکس ۳', 'جزئیات فوق‌العاده لوکس و انحصاری ملک سوم')">
+        <img src="https://via.placeholder.com/280x150?text=ملک+لوکس+3" alt="ملک لوکس 3">
+        <h3>ملک لوکس ۳</h3>
+        <p>جزئیات فوق‌العاده لوکس</p>
+    </div>
+</div>
 
-## 🔹 ویژگی‌ها:
+<img id="tower" src="https://via.placeholder.com/200x400?text=برج+2020KHODA" alt="برج 2020KHODA">
 
-- هدر Glow و Shine با شعار رسمی برند  
-- کارت ملک **۲۰هزار متری** با توضیحات  
-- نمایش برج اختصاصی **۲۰۲۰KHODA**  
-- ذرات پویا و پس‌زمینه تعاملی  
-- واکنش‌گرایی کامل برای موبایل و دسکتاپ  
+<div class="popup" id="popup">
+    <span class="close-btn" onclick="closePopup()">×</span>
+    <h2 id="popup-title"></h2>
+    <p id="popup-desc"></p>
+</div>
 
----
+<canvas id="bg"></canvas>
 
-## 🚀 نصب و راه‌اندازی:
+<script type="module">
+// WebGL سه‌بعدی با Three.js
+import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.155.0/build/three.module.js';
+import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.155.0/examples/jsm/controls/OrbitControls.js';
 
-1. کپی فایل `index.html` روی هاست یا گوشی  
-2. تصاویر واقعی ملک‌ها و برج را جایگزین placeholderها کنید  
-3. مرورگر مدرن موبایل یا دسکتاپ استفاده کنید  
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
+camera.position.z=8;
 
----
+const renderer = new THREE.WebGLRenderer({canvas:document.getElementById('bg'),antialias:true});
+renderer.setSize(window.innerWidth,window.innerHeight);
 
-**2020KHODA - خرید و فروش انحصاری ملک‌های الماس‌گونه**  
-قدرت، لوکس بودن، جاودانگی، انحصار.
+// نورپردازی
+scene.add(new THREE.AmbientLight(0xffffff,0.3));
+const point1 = new THREE.PointLight(0xffcc00,1.5,100); point1.position.set(10,10,10); scene.add(point1);
+const point2 = new THREE.PointLight(0xff6600,1.2,100); point2.position.set(-10,10,10); scene.add(point2);
+
+// ذرات
+const starGeo = new THREE.BufferGeometry();
+const starCount=500;
+const posArray = new Float32Array(starCount*3);
+for(let i=0;i<starCount*3;i++){ posArray[i]=(Math.random()-0.5)*60; }
+starGeo.setAttribute('position',new THREE.BufferAttribute(posArray,3));
+const stars = new THREE.Points(starGeo,new THREE.PointsMaterial({color:0xffffff,size:0.05}));
+scene.add(stars);
+
+// کنترل
+const controls = new OrbitControls(camera,renderer.domElement);
+controls.enableDamping=true; controls.dampingFactor=0.05; controls.enablePan=false;
+
+// انیمیشن
+function animate(){
+    requestAnimationFrame(animate);
+    const pos = stars.geometry.attributes.position.array;
+    for(let i=2;i<pos.length;i+=3){ pos[i]+=0.05; if(pos[i]>5) pos[i]=-30; }
+    stars.geometry.attributes.position.needsUpdate=true;
+    controls.update();
+    renderer.render(scene,camera);
+}
+animate();
+window.addEventListener('resize',()=>{camera.aspect=window.innerWidth/window.innerHeight; camera.updateProjectionMatrix(); renderer.setSize(window.innerWidth,window.innerHeight);});
+
+// Pop-up جزئیات ملک
+function showDetail(title,desc){
+    document.getElementById('popup-title').innerText=title;
+    document.getElementById('popup-desc').innerText=desc;
+    document.getElementById('popup').style.display='block';
+}
+function closePopup(){
+    document.getElementById('popup').style.display='none';
+}
+</script>
+
+</body>
+</html>
