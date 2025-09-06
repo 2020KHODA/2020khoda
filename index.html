@@ -1,111 +1,26 @@
-<!DOCTYPE html>
-<html lang="fa">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>2020KHODA - املاک الماس‌گونه سلطنتی</title>
-<style>
-body {
-    margin:0;
-    overflow:hidden;
-    background:#000;
-    font-family:'Tahoma',sans-serif;
-}
-header {
-    position:absolute;
-    top:10px;
-    width:100%;
-    text-align:center;
-    color:#ffcc00;
-    font-size:1.8rem;
-    text-shadow:0 0 50px #ffcc00,0 0 100px #ff9900;
-    z-index:2;
-    animation:glow 2s ease-in-out infinite alternate;
-}
-@keyframes glow {
-    0% { text-shadow:0 0 20px #ffcc00,0 0 40px #ff9900; }
-    50% { text-shadow:0 0 50px #ffcc00,0 0 100px #ff9900; }
-    100% { text-shadow:0 0 80px #ffcc00,0 0 160px #ff9900; }
-}
-.card {
-    position:absolute;
-    top:60%;
-    left:50%;
-    transform:translate(-50%, -50%);
-    width:300px;
-    height:200px;
-    background:#111;
-    border:2px solid #ffcc00;
-    border-radius:15px;
-    overflow:hidden;
-    box-shadow:0 0 30px #ffcc00;
-    text-align:center;
-    color:#fff;
-    font-size:1rem;
-}
-.card img {
-    width:100%;
-    height:120px;
-    object-fit:cover;
-}
-.card h3 { margin:5px 0; }
-.card p { margin:0 5px; font-size:0.9rem; }
-#tower {
-    position:absolute;
-    bottom:10px;
-    right:10px;
-    width:200px;
-    border:3px solid #ffcc00;
-    border-radius:10px;
-    box-shadow:0 0 30px #ffcc00;
-}
-</style>
-</head>
-<body>
+# 2020KHODA - صفحه رسمی املاک الماس‌گونه
 
-<header>
-2020KHODA - خرید و فروش انحصاری ملک‌های الماس‌گونه<br>
-قدرت، لوکس بودن، جاودانگی، انحصار
-</header>
+این صفحه رسمی برند **۲۰۲۰KHODA** است که تجربه **لوکس، سلطنتی و جهانی** خرید و فروش ملک‌های انحصاری را ارائه می‌دهد.
 
-<div class="card">
-<img src="https://via.placeholder.com/300x120?text=ملک+20هزار+متری" alt="ملک 20 هزار متری">
-<h3>ملک ۲۰هزار متری</h3>
-<p>یک ملک الماس‌گونه بی‌نظیر در ورودی شهر، نماد قدرت و لوکس بودن برند ۲۰۲۰KHODA.</p>
-</div>
+---
 
-<img id="tower" src="https://via.placeholder.com/200x400?text=برج+2020KHODA" alt="برج 2020KHODA">
+## 🔹 ویژگی‌ها:
 
-<script>
-// ذرات پس‌زمینه
-const canvas = document.createElement('canvas');
-canvas.style.position='fixed';
-canvas.style.top='0';
-canvas.style.left='0';
-canvas.width=window.innerWidth;
-canvas.height=window.innerHeight;
-canvas.style.zIndex='1';
-document.body.appendChild(canvas);
-const ctx = canvas.getContext('2d');
-let stars=[];
-for(let i=0;i<300;i++){
-    stars.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,r:Math.random()*1.5+0.5,speed:Math.random()*0.5+0.1});
-}
-function animateStars(){
-    ctx.clearRect(0,0,canvas.width,canvas.height);
-    stars.forEach(s=>{
-        s.y-=s.speed;
-        if(s.y<0) s.y=canvas.height;
-        ctx.beginPath();
-        ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
-        ctx.fillStyle='#fff';
-        ctx.fill();
-    });
-    requestAnimationFrame(animateStars);
-}
-animateStars();
-window.addEventListener('resize',()=>{canvas.width=window.innerWidth; canvas.height=window.innerHeight;});
-</script>
+- هدر Glow و Shine با شعار رسمی برند  
+- کارت ملک **۲۰هزار متری** با توضیحات  
+- نمایش برج اختصاصی **۲۰۲۰KHODA**  
+- ذرات پویا و پس‌زمینه تعاملی  
+- واکنش‌گرایی کامل برای موبایل و دسکتاپ  
 
-</body>
-</html>
+---
+
+## 🚀 نصب و راه‌اندازی:
+
+1. کپی فایل `index.html` روی هاست یا گوشی  
+2. تصاویر واقعی ملک‌ها و برج را جایگزین placeholderها کنید  
+3. مرورگر مدرن موبایل یا دسکتاپ استفاده کنید  
+
+---
+
+**2020KHODA - خرید و فروش انحصاری ملک‌های الماس‌گونه**  
+قدرت، لوکس بودن، جاودانگی، انحصار.
