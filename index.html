@@ -3,14 +3,24 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>2020KHODA - املاک امپراتوری 3D</title>
+<title>2020KHODA - املاک الماس‌گونه سلطنتی جهانی</title>
 <style>
 body { margin:0; overflow:hidden; background:#000; font-family:'Tahoma',sans-serif; }
-#info { position:absolute; top:20px; width:100%; text-align:center; color:#ffcc00; font-size:2rem; text-shadow:0 0 20px #ffcc00; z-index:2; }
+#info {
+  position:absolute; top:20px; width:100%; text-align:center;
+  color:#ffcc00; font-size:2rem;
+  text-shadow:0 0 40px #ffcc00,0 0 80px #ff9900; z-index:2;
+  animation:glow 2s ease-in-out infinite alternate;
+}
+@keyframes glow {
+  0% { text-shadow:0 0 20px #ffcc00,0 0 40px #ff9900; }
+  50% { text-shadow:0 0 40px #ffcc00,0 0 80px #ff9900; }
+  100% { text-shadow:0 0 60px #ffcc00,0 0 120px #ff9900; }
+}
 </style>
 </head>
 <body>
-<div id="info">2020KHODA - املاک الماس‌گونه</div>
+<div id="info">2020KHODA - ملک‌های الماس‌گونه سلطنتی جهانی</div>
 
 <script src="https://cdn.jsdelivr.net/npm/three@0.155.0/build/three.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/three@0.155.0/examples/js/controls/OrbitControls.js"></script>
@@ -22,60 +32,64 @@ camera.position.z = 8;
 
 const renderer = new THREE.WebGLRenderer({antialias:true});
 renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.outputEncoding = THREE.sRGBEncoding;
 document.body.appendChild(renderer.domElement);
 
 // نورپردازی
-const ambient = new THREE.AmbientLight(0xffffff,0.4);
-scene.add(ambient);
-
+scene.add(new THREE.AmbientLight(0xffffff,0.3));
 const point1 = new THREE.PointLight(0xffcc00,1.5,100); point1.position.set(10,10,10); scene.add(point1);
 const point2 = new THREE.PointLight(0xff6600,1.2,100); point2.position.set(-10,10,10); scene.add(point2);
 
 // کنترل موس
 const controls = new THREE.OrbitControls(camera, renderer.domElement);
-controls.enableDamping = true; controls.dampingFactor=0.05; controls.enablePan=false;
+controls.enableDamping=true; controls.dampingFactor=0.05; controls.enablePan=false;
 
 // کارت‌ها
 const loader = new THREE.TextureLoader();
-const cards = [];
-const positions = [-4,0,4];
+const cards=[]; 
+const positions=[-4,0,4]; // موقعیت کارت‌ها
 
-positions.forEach((x,i)=>{
-    loader.load('https://via.placeholder.com/400x300', texture=>{
-        const geo = new THREE.BoxGeometry(3,2,0.2);
-        const mat = new THREE.MeshStandardMaterial({map:texture, metalness:0.6, roughness:0.2});
-        const card = new THREE.Mesh(geo,mat);
-        card.position.x = x; card.position.y = 0; card.position.z = 0;
-        scene.add(card);
-        cards.push(card);
+positions.forEach(x=>{
+  loader.load('https://via.placeholder.com/400x300', texture=>{
+    const geo = new THREE.BoxGeometry(3,2,0.2);
+    const mat = new THREE.MeshStandardMaterial({
+      map: texture,
+      metalness:0.9,
+      roughness:0.1,
+      envMapIntensity:1.0
     });
+    const card = new THREE.Mesh(geo,mat);
+    card.position.x = x; card.position.y = 0; scene.add(card); cards.push(card);
+  });
 });
 
-// ستاره‌ها
-const stars=[];
-for(let i=0;i<300;i++){
-    const sGeo=new THREE.SphereGeometry(Math.random()*0.02+0.01,8,8);
-    const sMat=new THREE.MeshBasicMaterial({color:0xffffff});
-    const s=new THREE.Mesh(sGeo,sMat);
-    s.position.set(Math.random()*30-15,Math.random()*30-15,Math.random()*-50);
-    scene.add(s); stars.push(s);
-}
+// ذرات پویا
+const starGeo = new THREE.BufferGeometry();
+const starCount = 800;
+const positionsArray = new Float32Array(starCount*3);
+for(let i=0;i<starCount*3;i++){ positionsArray[i]=(Math.random()-0.5)*60; }
+starGeo.setAttribute('position', new THREE.BufferAttribute(positionsArray,3));
+const stars = new THREE.Points(starGeo,new THREE.PointsMaterial({color:0xffffff,size:0.05,sizeAttenuation:true}));
+scene.add(stars);
 
 // انیمیشن
 function animate(){
-    requestAnimationFrame(animate);
-    cards.forEach(c=>{c.rotation.y+=0.002; c.rotation.x+=0.001;});
-    stars.forEach(s=>{s.position.z+=0.05; if(s.position.z>5) s.position.z=-50;});
-    controls.update();
-    renderer.render(scene,camera);
+  requestAnimationFrame(animate);
+  cards.forEach(c=>{ c.rotation.y+=0.002; c.rotation.x+=0.001; });
+  const pos = stars.geometry.attributes.position.array;
+  for(let i=2;i<pos.length;i+=3){ pos[i]+=0.08; if(pos[i]>5) pos[i]=-30; }
+  stars.geometry.attributes.position.needsUpdate=true;
+  controls.update();
+  renderer.render(scene,camera);
 }
 animate();
 
 // تغییر سایز
 window.addEventListener('resize',()=>{
-    camera.aspect=window.innerWidth/window.innerHeight;
-    camera.updateProjectionMatrix();
-    renderer.setSize(window.innerWidth, window.innerHeight);
+  camera.aspect=window.innerWidth/window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
 });
 </script>
 </body>
