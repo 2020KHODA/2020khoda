@@ -36,4 +36,3 @@ Rare large-scale urban plot ready to become Shiraz’s new iconic gateway.
 - Search on Google: 2020KHODA
 
 > تصاویر با الهام از پروژه ۲۰۲۰خدا و محل زمین طراحی شده‌اند.
-https://username.github.io/2020KHODA-DiamondTower/
